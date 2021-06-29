@@ -1,0 +1,16 @@
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.csproj.AssemblyReference.cache
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.AssemblyInfoInputs.cache
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.AssemblyInfo.cs
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.csproj.CoreCompileInputs.cache
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.exe
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.deps.json
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.runtimeconfig.json
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.runtimeconfig.dev.json
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.dll
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\ref\University hierarchy.dll
+C:\Hierarchy\university-hierarchy\bin\Debug\net5.0\University hierarchy.pdb
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.dll
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\ref\University hierarchy.dll
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.pdb
+C:\Hierarchy\university-hierarchy\obj\Debug\net5.0\University hierarchy.genruntimeconfig.cache

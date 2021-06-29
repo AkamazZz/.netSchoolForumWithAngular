@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\University hierarchy\\University hierarchy.csproj": {}
+    "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj": {}
   },
   "projects": {
-    "C:\\University hierarchy\\University hierarchy.csproj": {
+    "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\University hierarchy\\University hierarchy.csproj",
+        "projectUniqueName": "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
         "projectName": "University hierarchy",
-        "projectPath": "C:\\University hierarchy\\University hierarchy.csproj",
+        "projectPath": "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
         "packagesPath": "C:\\Users\\AkmzZz\\.nuget\\packages\\",
-        "outputPath": "C:\\University hierarchy\\obj\\",
+        "outputPath": "C:\\Hierarchy\\university-hierarchy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AkmzZz\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "EnterpriseLibrary.Data.SqlCe": {
+              "target": "Package",
+              "version": "[6.0.1304, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

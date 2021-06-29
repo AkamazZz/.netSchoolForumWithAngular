@@ -15,4 +15,10 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Users\AkmzZz\.nuget\packages\newtonsoft.json\10.0.1</PkgNewtonsoft_Json>
+    <PkgEnterpriseLibrary_Common Condition=" '$(PkgEnterpriseLibrary_Common)' == '' ">C:\Users\AkmzZz\.nuget\packages\enterpriselibrary.common\6.0.1304</PkgEnterpriseLibrary_Common>
+    <PkgEnterpriseLibrary_Data Condition=" '$(PkgEnterpriseLibrary_Data)' == '' ">C:\Users\AkmzZz\.nuget\packages\enterpriselibrary.data\6.0.1304</PkgEnterpriseLibrary_Data>
+    <PkgEnterpriseLibrary_Data_SqlCe Condition=" '$(PkgEnterpriseLibrary_Data_SqlCe)' == '' ">C:\Users\AkmzZz\.nuget\packages\enterpriselibrary.data.sqlce\6.0.1304</PkgEnterpriseLibrary_Data_SqlCe>
+  </PropertyGroup>
 </Project>
