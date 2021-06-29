@@ -6,9 +6,7 @@ namespace University_hierarchy
     {
         static void Main(string[] args)
         {
-            Subject a = new Subject();
-            Console.WriteLine("Hello World!");
-           a.yes("hah");
+    
         }
     }
 }

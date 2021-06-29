@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace University_hierarchy
+namespace University_hierarchy.Entity
 {
     class Subject
     {
-         private string b {get;set;} = "yes";
-         
-         public void yes(string a){
-             Console.WriteLine(a);
-         }
+       public int Subject_Id {get;set;}
+       public string Subject_name {get;set;}
+
+       
     }
 }
+

@@ -2,39 +2,6 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "EnterpriseLibrary.Common/6.0.1304": {
-        "type": "package",
-        "compile": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Common.dll": {}
-        },
-        "runtime": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Common.dll": {}
-        }
-      },
-      "EnterpriseLibrary.Data/6.0.1304": {
-        "type": "package",
-        "dependencies": {
-          "EnterpriseLibrary.Common": "6.0.0"
-        },
-        "compile": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.dll": {}
-        },
-        "runtime": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.dll": {}
-        }
-      },
-      "EnterpriseLibrary.Data.SqlCe/6.0.1304": {
-        "type": "package",
-        "dependencies": {
-          "EnterpriseLibrary.Data": "6.0.0"
-        },
-        "compile": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll": {}
-        },
-        "runtime": {
-          "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -424,6 +391,15 @@
           }
         }
       },
+      "MySqlConnector/1.3.7": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/MySqlConnector.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/MySqlConnector.dll": {}
+        }
+      },
       "Newtonsoft.Json/10.0.1": {
         "type": "package",
         "dependencies": {
@@ -459,6 +435,20 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "[5.0.5, 6.0.0)",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1",
+          "MySqlConnector": "1.3.7"
+        },
+        "compile": {
+          "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -1518,58 +1508,6 @@
     }
   },
   "libraries": {
-    "EnterpriseLibrary.Common/6.0.1304": {
-      "sha512": "w/ua1PWAQD1/CnJ+qz/5APgmqI/1YnbamnwFGSotm7b66sFIkrnfLC+9+WzcSZWnePwwUw3Pl2QsLVDyX7NwaQ==",
-      "type": "package",
-      "path": "enterpriselibrary.common/6.0.1304",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "EnterpriseLibrary.Configuration.xsd",
-        "Update-EntlibConfiguration.ps1",
-        "enterpriselibrary.common.6.0.1304.nupkg.sha512",
-        "enterpriselibrary.common.nuspec",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Common.dll",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Common.xml",
-        "tools/Utils.psm1",
-        "tools/install.ps1"
-      ]
-    },
-    "EnterpriseLibrary.Data/6.0.1304": {
-      "sha512": "FmaIrwbO7qOg0hd6rESeltyxcOccBa9V5QXPQ/4vMzpqZXh457uiJcwV4Xtx8q1zFhiGq1AszYjWP1p69Qps+w==",
-      "type": "package",
-      "path": "enterpriselibrary.data/6.0.1304",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Readme.txt",
-        "enterpriselibrary.data.6.0.1304.nupkg.sha512",
-        "enterpriselibrary.data.nuspec",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.dll",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.xml",
-        "tools/Utils.psm1",
-        "tools/install.ps1"
-      ]
-    },
-    "EnterpriseLibrary.Data.SqlCe/6.0.1304": {
-      "sha512": "YY7OUwPeh3nvZ4BsZJCEu28Sm+UEx8GqLarVSGFORXU3QQmvmFTJBiS4ik7Lop0rtDZlU36zpsickPhUURhFcQ==",
-      "type": "package",
-      "path": "enterpriselibrary.data.sqlce/6.0.1304",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Readme.txt",
-        "enterpriselibrary.data.sqlce.6.0.1304.nupkg.sha512",
-        "enterpriselibrary.data.sqlce.nuspec",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll",
-        "lib/NET45/Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.xml",
-        "tools/Utils.psm1",
-        "tools/install.ps1"
-      ]
-    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
@@ -2232,6 +2170,37 @@
         "version.txt"
       ]
     },
+    "MySqlConnector/1.3.7": {
+      "sha512": "cceT5xpMPgInT8sVnmhZ62aouEux6dWJjOaMSsYW0TmLvK+gwG0eKw8J9NklTw+Q5Cch9Sd04OBux3GSITvABw==",
+      "type": "package",
+      "path": "mysqlconnector/1.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net45/MySqlConnector.dll",
+        "lib/net45/MySqlConnector.xml",
+        "lib/net461/MySqlConnector.dll",
+        "lib/net461/MySqlConnector.xml",
+        "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
+        "lib/net5.0/MySqlConnector.dll",
+        "lib/net5.0/MySqlConnector.xml",
+        "lib/netcoreapp2.1/MySqlConnector.dll",
+        "lib/netcoreapp2.1/MySqlConnector.xml",
+        "lib/netcoreapp3.1/MySqlConnector.dll",
+        "lib/netcoreapp3.1/MySqlConnector.xml",
+        "lib/netstandard1.3/MySqlConnector.dll",
+        "lib/netstandard1.3/MySqlConnector.xml",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
+        "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
+        "logo.png",
+        "mysqlconnector.1.3.7.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
     "Newtonsoft.Json/10.0.1": {
       "sha512": "ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
       "type": "package",
@@ -2257,6 +2226,20 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.MySql/5.0.0": {
+      "sha512": "5T1c5sjnzhryUwD647l209Fsvhfzu1R5vS9G26HuT6T8tEtli9xTBJInge+17Cqy2Q2XTYug+vVfTk3gNH5Zjw==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.mysql/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll",
+        "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.xml",
+        "pomelo.entityframeworkcore.mysql.5.0.0.nupkg.sha512",
+        "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5782,8 +5765,9 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "EnterpriseLibrary.Data.SqlCe >= 6.0.1304",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.7"
+      "Microsoft.EntityFrameworkCore >= 5.0.7",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.7",
+      "Pomelo.EntityFrameworkCore.MySql >= 5.0.0"
     ]
   },
   "packageFolders": {
@@ -5792,11 +5776,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
+      "projectUniqueName": "c:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
       "projectName": "University hierarchy",
-      "projectPath": "C:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
+      "projectPath": "c:\\Hierarchy\\university-hierarchy\\University hierarchy.csproj",
       "packagesPath": "C:\\Users\\AkmzZz\\.nuget\\packages\\",
-      "outputPath": "C:\\Hierarchy\\university-hierarchy\\obj\\",
+      "outputPath": "c:\\Hierarchy\\university-hierarchy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AkmzZz\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5825,13 +5809,17 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "EnterpriseLibrary.Data.SqlCe": {
+          "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[6.0.1304, )"
+            "version": "[5.0.7, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[5.0.7, )"
+          },
+          "Pomelo.EntityFrameworkCore.MySql": {
+            "target": "Package",
+            "version": "[5.0.0, )"
           }
         },
         "imports": [
@@ -5852,57 +5840,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "EnterpriseLibrary.Data 6.0.1304 зависит от EnterpriseLibrary.Common (>= 6.0.0), но EnterpriseLibrary.Common 6.0.0 не найден. Использовано наилучшее приближенное соответствие EnterpriseLibrary.Common 6.0.1304.",
-      "libraryId": "EnterpriseLibrary.Common",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "EnterpriseLibrary.Data.SqlCe 6.0.1304 зависит от EnterpriseLibrary.Data (>= 6.0.0), но EnterpriseLibrary.Data 6.0.0 не найден. Использовано наилучшее приближенное соответствие EnterpriseLibrary.Data 6.0.1304.",
-      "libraryId": "EnterpriseLibrary.Data",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"EnterpriseLibrary.Common 6.0.1304\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "EnterpriseLibrary.Common",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"EnterpriseLibrary.Data 6.0.1304\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "EnterpriseLibrary.Data",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"EnterpriseLibrary.Data.SqlCe 6.0.1304\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "EnterpriseLibrary.Data.SqlCe",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }
