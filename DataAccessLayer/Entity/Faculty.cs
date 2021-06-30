@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
@@ -7,5 +7,8 @@ namespace DataAccessLayer.Entity
     {
         public int Faculty_Id {get; set;}
         public string Faculty_name {get; set;}
+
+        public virtual Student Student{ get; set; }
+        public ICollection<Speciality> Speicality { get; set; }
     }
 }

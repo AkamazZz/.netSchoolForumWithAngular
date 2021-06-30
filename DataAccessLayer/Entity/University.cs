@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
@@ -8,8 +9,8 @@ namespace DataAccessLayer.Entity
 
         public string University_Name{get;set;}
 
-        public Student Student { get; set; }
+        public ICollection<Student> Student { get; set; }
 
-        public Teacher Teacher { get; set; }
+        public ICollection<Teacher> Teacher { get; set; }
     }
 }

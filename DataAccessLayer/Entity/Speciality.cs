@@ -9,5 +9,9 @@ namespace DataAccessLayer.Entity
        public int Faculty_Id {get;set;}
 
        public string Speciality_name {get; set;}
+
+        public virtual Student Student { get; set; }
+
+        public Faculty Faculty{ get; set; }
     }
 }

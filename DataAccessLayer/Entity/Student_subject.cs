@@ -6,6 +6,10 @@ namespace DataAccessLayer.Entity
     {
         public int Student_Id {get;set;}
         public int Subject_Id {get;set;}
+
+        public Student Student { get; set; }
+
+        public Subject Subject { get; set; }
     
     }
 }

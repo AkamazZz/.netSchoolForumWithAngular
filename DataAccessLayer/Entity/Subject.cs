@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
@@ -9,7 +10,10 @@ namespace DataAccessLayer.Entity
 
        public Assessment Assessment { get; set; }
 
-       
+       public ICollection<Teacher_subject> Teacher_Subject { get; set; }
+
+       public ICollection<Student_subject> Student_Subject { get; set; }
+
     }
 }
 

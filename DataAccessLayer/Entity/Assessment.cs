@@ -12,6 +12,6 @@ namespace DataAccessLayer.Entity
 
         public Subject Subject { get; set; }
 
-        public Stunde
+    
     }
 }
