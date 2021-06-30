@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
-    class Faculty
+    public class Faculty
     {
         public int Faculty_Id {get; set;}
         public string Faculty_name {get; set;}

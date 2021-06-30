@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
-    class Student 
+    public class Student 
     {
-        public int Id {get;set;}
+        public int Student_Id {get;set;}
 
         public int University_Id { get; set; }
 
@@ -20,13 +20,15 @@ namespace DataAccessLayer.Entity
         public virtual Faculty Faculty { get; set; }
 
         public int Group_Id {get;set;}
-        public virtual Group Group { get; set; }
+        public  Group Group { get; set; }
 
         public string FirstName {get; set;}
 
         public string LastName {get; set;}
 
         public ICollection<Student_subject> Student_Subject { get; set; }
+
+        public ICollection<Assessment> Assessment { get; set; }
 
 
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Entity
 {
-    class Teacher
+    public class Teacher
     {
         public int Teacher_Id {get;set;}
 
-        public ICollection<University> University { get; set; }
+        public University University { get; set; }
 
         public int University_Id {get; set;}
 

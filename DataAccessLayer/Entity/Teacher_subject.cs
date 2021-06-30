@@ -2,7 +2,7 @@
 
 namespace DataAccessLayer.Entity
 {
-    class Teacher_subject
+    public class Teacher_subject
     {
         
         public int Teacher_Id {get;set;}

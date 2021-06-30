@@ -3,3 +3,13 @@ C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.GeneratedMSB
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfoInputs.cache
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfo.cs
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.deps.json
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.dll
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\ref\BusinessLogicLayer.dll
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.pdb
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\DataAccessLayer.dll
+C:\Hierarchy\BusinessLogicLayer\bin\Debug\net5.0\DataAccessLayer.pdb
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CopyComplete
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.dll
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\ref\BusinessLogicLayer.dll
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.pdb

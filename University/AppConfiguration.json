@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=LAPTOP-O42EJ99Q\\SQLEXPRESS;Initial Catalog=University;User Id = sa; password = sa; Integrated Security = False;"
-  }
-}

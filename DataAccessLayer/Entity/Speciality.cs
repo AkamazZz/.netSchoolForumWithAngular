@@ -2,7 +2,7 @@
 
 namespace DataAccessLayer.Entity
 {
-    class Speciality
+    public class Speciality
     {
        public int Speciality_Id {get;set;}
 
