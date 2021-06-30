@@ -6000,19 +6000,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\akmzz\\.nuget\\packages\\": {}
+    "C:\\Users\\AkmzZz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "C:\\Hierarchy\\university-hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "C:\\Hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
-      "packagesPath": "C:\\Users\\akmzz\\.nuget\\packages\\",
-      "outputPath": "C:\\Hierarchy\\DataAccessLayer\\obj\\",
+      "projectPath": "C:\\Hierarchy\\university-hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
+      "packagesPath": "C:\\Users\\AkmzZz\\.nuget\\packages\\",
+      "outputPath": "C:\\Hierarchy\\university-hierarchy\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\akmzz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AkmzZz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6076,7 +6076,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
