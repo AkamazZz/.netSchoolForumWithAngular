@@ -1,0 +1,5 @@
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.AssemblyReference.cache
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfoInputs.cache
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfo.cs
+C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
