@@ -109,6 +109,41 @@ namespace DataAccessLayer.DataContext
 
             #endregion
 
+            #region Group
+            modelBuilder.Entity<Group>().ToTable("group");
+
+            modelBuilder.Entity<Group>().HasKey(g => g.Group_Id);
+            modelBuilder.Entity<Group>().Property(b => b.Group_Id).UseIdentityColumn(1, 1).IsRequired().HasColumnName("group_id");
+
+            modelBuilder.Entity<Group>().Property(g => g.Group_Name).IsRequired(true).HasColumnName("group_name");
+            #endregion
+
+            #region Faculty
+            modelBuilder.Entity<Faculty>().ToTable("faculty");
+
+            modelBuilder.Entity<Faculty>().HasKey(f => f.Faculty_Id);
+            modelBuilder.Entity<Faculty>().Property(f => f.Faculty_Id).UseIdentityColumn(1, 1).IsRequired().HasColumnName("faculty_id");
+
+            modelBuilder.Entity<Faculty>().Property(f => f.Faculty_name).IsRequired(true).HasColumnName("faculty_name");
+            #endregion
+
+            #region Speciality
+            modelBuilder.Entity<Speciality>().ToTable("Specilaity");
+
+            modelBuilder.Entity<Speciality>().HasKey(s => s.Speciality_Id);
+            modelBuilder.Entity<Speciality>().Property(s => s.Speciality_Id).UseIdentityColumn(1, 1).IsRequired().HasColumnName("speciality_id");
+
+            modelBuilder.Entity<Speciality>().Property(s => s.Faculty_Id).IsRequired(true).HasColumnName("faculty_id");
+            modelBuilder.Entity<Speciality>().Property(s => s.Speciality_name).IsRequired(true).HasColumnName("speciality_name");
+
+            modelBuilder.Entity<Speciality>()
+                               .HasOne<Faculty>(s => s.Faculty)
+                               .WithMany(f => f.Speicality)
+                               .HasForeignKey(uni => uni.Faculty_Id)
+                               .OnDelete(DeleteBehavior.Restrict);
+
+            #endregion
+
             #region Teacher
 
             modelBuilder.Entity<Teacher>().ToTable("Teacher");
@@ -128,26 +163,6 @@ namespace DataAccessLayer.DataContext
 
             #endregion
 
-            #region Teacher_subject
-            modelBuilder.Entity<Teacher_subject>().ToTable("Teacher_subject");
-
-
-            modelBuilder.Entity<Teacher_subject>().Property(ts => ts.Teacher_Id).IsRequired(true).HasColumnName("teacher_id");
-            modelBuilder.Entity<Teacher_subject>().Property(ts => ts.Subject_Id).IsRequired(true).HasColumnName("subject_id");
-
-            modelBuilder.Entity<Teacher_subject>()
-                                           .HasOne<Teacher>(t => t.Teacher)
-                                           .WithMany(ts => ts.Teacher_Subject)
-                                           .HasForeignKey(uni => uni.Teacher_Id)
-                                           .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Teacher_subject>()
-                                           .HasOne<Subject>(t => t.Subject)
-                                           .WithMany(ts => ts.Teacher_Subject)
-                                           .HasForeignKey(uni => uni.Subject_Id)
-                                           .OnDelete(DeleteBehavior.Restrict);
-
-            #endregion
-
             #region Subject
 
             modelBuilder.Entity<Subject>().ToTable("Subject");
@@ -163,13 +178,29 @@ namespace DataAccessLayer.DataContext
 
             #endregion
 
+            #region Teacher_subject
+            modelBuilder.Entity<Teacher_subject>().ToTable("Teacher_subject");
+            modelBuilder.Entity<Teacher_subject>().HasKey(ts => new { ts.Teacher_Id, ts.Subject_Id });
+
+            modelBuilder.Entity<Teacher_subject>()
+                                           .HasOne<Teacher>(t => t.Teacher)
+                                           .WithMany(ts => ts.Teacher_Subject)
+                                           .HasForeignKey(uni => uni.Teacher_Id)
+                                           .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Teacher_subject>()
+                                           .HasOne<Subject>(t => t.Subject)
+                                           .WithMany(ts => ts.Teacher_Subject)
+                                           .HasForeignKey(uni => uni.Subject_Id)
+                                           .OnDelete(DeleteBehavior.Restrict);
+
+            #endregion
+
             #region Student_Subject
             modelBuilder.Entity<Student_subject>().ToTable("Student_subject");
+            modelBuilder.Entity<Student_subject>().HasKey(ss => new { ss.Student_Id, ss.Subject_Id});
 
 
-            modelBuilder.Entity<Student_subject>().Property(ss => ss.Student_Id).IsRequired(true).HasColumnName("student_id");
-            modelBuilder.Entity<Student_subject>().Property(ss => ss.Subject_Id).IsRequired(true).HasColumnName("subject_id");
-
+            
             modelBuilder.Entity<Student_subject>()
                                            .HasOne<Student>(ss => ss.Student)
                                            .WithMany(s => s.Student_Subject)
@@ -187,11 +218,11 @@ namespace DataAccessLayer.DataContext
             modelBuilder.Entity<Assessment>().ToTable("Assessment");
 
             modelBuilder.Entity<Assessment>().HasKey(a => a.Assessment_Id);
-            modelBuilder.Entity<Assessment>().Property(a => a.Assessment_Id).UseIdentityColumn(1, 1).IsRequired().HasColumnName("subject_id");
+            modelBuilder.Entity<Assessment>().Property(a => a.Assessment_Id).UseIdentityColumn(1, 1).IsRequired().HasColumnName("assessment_id");
 
             modelBuilder.Entity<Assessment>().Property(a => a.Student_Id).IsRequired(true).HasColumnName("student_id");
             modelBuilder.Entity<Assessment>().Property(a => a.Subject_Id).IsRequired(true).HasColumnName("subject_id");
-            modelBuilder.Entity<Assessment>().Property(a => a.Grade).IsRequired(false).HasColumnName("grade");
+            modelBuilder.Entity<Assessment>().Property(a => a.Grade).IsRequired(true).HasColumnName("grade");
 
             modelBuilder.Entity<Assessment>()
                                            .HasOne<Subject>(a => a.Subject)
@@ -207,7 +238,7 @@ namespace DataAccessLayer.DataContext
             #endregion
         }
 
-
+       
     }
 }
 
