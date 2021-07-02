@@ -7,7 +7,7 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface ISpeciality_Service
     {
-        Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecialityNameByFacultyIdAndSpecilaityId(int grade, int student_id, int subject_id);
+        Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecialityIdByFacultyNameAndSpecilaityName(string faculty_name, string speciality_name);
         
 
     

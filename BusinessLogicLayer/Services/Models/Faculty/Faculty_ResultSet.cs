@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Services.Models.Faculty
 {
     public class Faculty_ResultSet
     {
-        public int Faculty_Id { get; set; }
-        public string Faculty_name { get; set; }
+        public int faculty_id { get; set; }
+        public string faculty_name { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services.Models.University
 {
-    class University_ResultSet
+    public class University_ResultSet
     {
         public int university_id { get; set; }
 

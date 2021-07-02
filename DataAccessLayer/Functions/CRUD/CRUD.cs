@@ -7,7 +7,7 @@ using DataAccessLayer.DataContext;
 
 namespace DataAccessLayer.Functions.CRUD
 {
-    class CRUD: ICRUD
+   public  class CRUD: ICRUD
     {
     
        
@@ -46,8 +46,53 @@ namespace DataAccessLayer.Functions.CRUD
                 }
             }
 
-           
-            public async Task<List<T>> ReadAll<T>() where T : class
+             public async Task<T> Read<T>(int entityId, int id) where T : class
+            {
+            try
+            {
+                using (DatabaseContext context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+                    T result = await context.FindAsync<T>(entityId,id);
+                    return result;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<T> Read<T>(string name, string name2) where T : class
+        {
+            try
+            {
+                using (DatabaseContext context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+                    T result = await context.FindAsync<T>(name,name2);
+                    return result;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public async Task<T> Read<T>(string name) where T : class
+        {
+            try
+            {
+                using (DatabaseContext context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+                    T result = await context.FindAsync<T>(name);
+                    return result;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public async Task<List<T>> ReadAll<T>() where T : class
             {
                 try
                 {
@@ -108,9 +153,11 @@ namespace DataAccessLayer.Functions.CRUD
                 }
             }
 
+
         
-            #endregion
-        }
+
+        #endregion
+    }
 
     }
 

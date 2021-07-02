@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services.Models.Student
 {
@@ -23,5 +19,7 @@ namespace BusinessLogicLayer.Services.Models.Student
         public string student_name{ get; set; }
 
         public string student_surname { get; set; }
+
+        
     }
 }
