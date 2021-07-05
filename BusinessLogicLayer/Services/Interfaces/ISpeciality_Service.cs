@@ -7,9 +7,8 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface ISpeciality_Service
     {
-        Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecialityIdByFacultyNameAndSpecilaityName(string faculty_name, string speciality_name);
-        
+        Task<string> GetSpecilaityNameBySpecilaityId(int speciliaty_id);
 
-    
+        Task<int> GetFacultyIdBySpecilaityId(int speciliaty_id);
     }
 }

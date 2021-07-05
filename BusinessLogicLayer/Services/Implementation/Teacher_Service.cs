@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Services.Implementation
 {
     public class Teacher_Service : ITeacher_Service
     {
-        public Task<Generic_ResultSet<Teacher_ResultSet>> GetNameAndSurnameById(string teacher_id)
+        public Task<Generic_ResultSet<Teacher_ResultSet>> GetNameAndSurnameById(int teacher_id)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface IGroup_Service
     {
-        Task<Generic_ResultSet<Group_ResultSet>> GetGroupNameByGroupId(int group_id);
+        Task<string> GetGroupNameByGroupId(int group_id);
 
     
     }

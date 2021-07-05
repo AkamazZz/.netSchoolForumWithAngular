@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Services.Interfaces
         Task<Generic_ResultSet<Student_ResultSet>> GetNameAndSurnameByStudentId(int student_id);
         Task<Generic_ResultSet<List<Student_ResultSet>>> GetAllStudentOfFaculty(int faculty_id);
         Task<Generic_ResultSet<List<Student_ResultSet>>> GetAllStudentOfSpecilaity(int speciliaty_id);
-        Task<Generic_ResultSet<Student_ResultSet>> GetGroupIdByStudentId(int student_id);
+        Task<int> GetGroupIdByStudentId(int student_id);
 
 
     }

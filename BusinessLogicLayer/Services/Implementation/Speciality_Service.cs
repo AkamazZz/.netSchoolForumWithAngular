@@ -14,20 +14,19 @@ namespace BusinessLogicLayer.Services.Implementation
     {
         private ICRUD _crud = new CRUD();
 
-        public async Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecialityIdByFacultyNameAndSpecilaityName(string faculty_name, string speciality_name)
+        public async Task<int> GetFacultyIdBySpecilaityId(int speciliaty_id)
         {
             Generic_ResultSet<Speciality_ResultSet> result = new Generic_ResultSet<Speciality_ResultSet>();
             try
             {
                 //GET speciality FROM DB
-                Speciality faculty = await _crud.Read<Speciality>(speciality_name,faculty_name);
+                Speciality spec = await _crud.Read<Speciality>(speciality_id);
 
                 //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
-                Faculty_ResultSet facultyReturned = new Faculty_ResultSet
+                Speciality_ResultSet facultyReturned = new Speciality_ResultSet
                 {
-                    faculty_id = faculty.Faculty_Id,
-                    faculty_name = faculty.Faculty_name,
-
+                    speciality_id = spec.Speciality_Id,
+                    speciality_name = spec.Speciality_name,
                 };
 
                 //SET SUCCESSFUL RESULT VALUES
@@ -44,7 +43,41 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result;
+            return result.result_set.speciality_id;
+            
+        }
+
+        public async Task<string> GetSpecilaityNameBySpecilaityId(int speciality_id)
+        {
+            Generic_ResultSet<Speciality_ResultSet> result = new Generic_ResultSet<Speciality_ResultSet>();
+            try
+            {
+                //GET speciality FROM DB
+                Speciality spec = await _crud.Read<Speciality>(speciality_id);
+
+                //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
+                Speciality_ResultSet facultyReturned = new Speciality_ResultSet
+                {
+                    speciality_id = spec.Speciality_Id,
+                    speciality_name = spec.Speciality_name,
+                };
+
+                //SET SUCCESSFUL RESULT VALUES
+                result.userMessage = string.Format("s");
+                result.internalMessage = "GetFacultyIdByFacultyName() method executed successfully.";
+                result.result_set = facultyReturned;
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "This faculty doesn't exist";
+                result.internalMessage = string.Format("{0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return result.result_set.speciality_name;
+                
         }
     }
 }

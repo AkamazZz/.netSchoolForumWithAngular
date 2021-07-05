@@ -7,6 +7,6 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface ITeacher_Service
     {
-        Task<Generic_ResultSet<Teacher_ResultSet>> GetNameAndSurnameById(string teacher_name, string teacher_surname);
+        Task<Generic_ResultSet<Teacher_ResultSet>> GetNameAndSurnameById(int teacher_id);
     }
 }

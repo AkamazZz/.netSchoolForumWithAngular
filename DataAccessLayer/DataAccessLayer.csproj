@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Entity\Specific\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

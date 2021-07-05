@@ -3,6 +3,7 @@ using DataAccessLayer.Functions.Interfaces;
 using DataAccessLayer.Functions.CRUD;
 using DataAccessLayer.Entity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
 using BusinessLogicLayer.Services.Models.Student;
@@ -42,6 +43,8 @@ namespace BusinessLogicLayer.Services.Implementation
                     });
                         }
                 });
+                
+
 
                 /*Student_ResultSet StudentReturned = new Student_ResultSet
                  {
@@ -110,6 +113,12 @@ namespace BusinessLogicLayer.Services.Implementation
                      student_surname = student.LastName,
                  };
                 */
+                int i = 1;
+               foreach(var s in result.result_set)
+                { 
+                    System.Console.WriteLine($"{0}. {1} {2} ", i , s.student_name, s.student_surname);
+                    ++i;
+                }
                 //SET SUCCESSFUL RESULT VALUES
                 result.userMessage = string.Format("Students from {0} speciality", speciality_id);
                 result.internalMessage = "GetAllStudentOfspeciality(int speciality_id) method executed successfully.";
@@ -126,7 +135,7 @@ namespace BusinessLogicLayer.Services.Implementation
             return result;
         }
 
-        public async Task<Generic_ResultSet<Student_ResultSet>> GetGroupIdByStudentId(int student_id)
+        public async Task<int> GetGroupIdByStudentId(int student_id)
         {
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
@@ -160,11 +169,10 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result;
+            return result.result_set.group_id;
         }
 
-
-        public async Task<Generic_ResultSet<Student_ResultSet>> GettNameAndSurnameByStudentID(int student_id)
+        public async Task<Generic_ResultSet<Student_ResultSet>> GetNameAndSurnameByStudentId(int student_id)
         {
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
