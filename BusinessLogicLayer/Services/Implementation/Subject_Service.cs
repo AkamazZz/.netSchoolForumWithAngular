@@ -2,6 +2,7 @@
 using DataAccessLayer.Functions.Interfaces;
 using DataAccessLayer.Functions.CRUD;
 using DataAccessLayer.Entity;
+using DataAccessLayer.Functions.Specific;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
@@ -14,6 +15,7 @@ namespace BusinessLogicLayer.Services.Implementation
     public class Subject_Service : ISubject_Service
     {
         private ICRUD _crud = new CRUD();
+        private ISubjectSpecific _iss = new SubjectSpecific();
 
         public async Task<string> GetSubjectNameBySubjectId(int subject_id)
         {
@@ -45,6 +47,29 @@ namespace BusinessLogicLayer.Services.Implementation
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
             return result.result_set.subject_name;
+        }
+
+        public async Task<List<string>> GetSubjectsNameBySubjectId(int student_id)
+        {
+            Generic_ResultSet<Subject_ResultSet> result = new Generic_ResultSet<Subject_ResultSet>();
+            var subjects = await _iss.SubjectsOfStudent(student_id);
+            try
+            {
+
+                
+                result.userMessage = string.Format("s");
+                result.internalMessage = "GetSybjectIdBySubjectName() method executed successfully.";
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "This subject doesn't exist";
+                result.internalMessage = string.Format("{0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return subjects;
         }
     }
 }

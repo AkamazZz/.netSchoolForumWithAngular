@@ -91,11 +91,6 @@ namespace BusinessLogicLayer.Services.Implementation
                     {
                         result.result_set.Add(new Student_ResultSet
                         {
-                            student_id = s.Student_Id,
-                            university_id = s.University_Id,
-                            speciality_id = s.Speciality_Id,
-                            faculty_id = s.Faculty_Id,
-                            group_id = s.Group_Id,
                             student_name = s.FirstName,
                             student_surname = s.LastName,
                         });

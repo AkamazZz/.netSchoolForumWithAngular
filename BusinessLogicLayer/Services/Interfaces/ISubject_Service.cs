@@ -11,7 +11,8 @@ namespace BusinessLogicLayer.Services.Interfaces
     public interface ISubject_Service
     {
         Task<string> GetSubjectNameBySubjectId(int subject_id);
+        Task<string> GetSubjectsNameBySubjectId(List<string> subject_name);
 
-    
+
     }
 }

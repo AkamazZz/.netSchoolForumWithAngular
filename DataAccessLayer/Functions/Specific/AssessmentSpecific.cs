@@ -10,8 +10,8 @@ using DataAccessLayer.Functions.Interfaces;
 
 namespace DataAccessLayer.Functions.Specific
 {
-    public class AssessmentSpecific: IAssessmentSpecific
-    { // Don't forger to add a function which will take list of subjects which have student, but before that make function where will be taken subject_id from student_subject entity
+    public class AssessmentSpecific : IAssessmentSpecific
+    {
         public async Task<int> GPA(int student_id)
         {
             try
@@ -29,8 +29,32 @@ namespace DataAccessLayer.Functions.Specific
                         sum += a;
                         ++iteration;
                     }
-                  
-                    return sum/iteration;
+
+                    return sum / iteration;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public async Task<Assessment> UpdateGradeByStudentIdAndSubjectId(int grade, int student_id, int subject_id)
+        {
+            try
+            {
+                using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+
+                    var mark = await context.Assessments.Where(g => g.Student_Id == student_id).Where(s => s.Subject_Id == subject_id).ToListAsync();
+
+                    if (mark.Count == 1)
+                    {
+                        mark.ElementAt(0).Grade = grade;
+                        var trackingApplicant = await context.Assessments.AddAsync(mark.ElementAt(0));
+                        await context.SaveChangesAsync();
+                        return mark.ElementAt(0);
+                    }
+                    return null;
                 }
             }
             catch
@@ -40,3 +64,4 @@ namespace DataAccessLayer.Functions.Specific
         }
     }
 }
+
