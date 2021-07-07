@@ -8,4 +8,12 @@ namespace BusinessLogicLayer.Services.Models
     {
         public T result_set { get; set; }
     }
+    
+
+    public class T : StandardResultObject
+    {
+        public T result_set { get; set; }
+    }
+
+   
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using DataAccessLayer.Functions.Interfaces;
 using DataAccessLayer.Functions.CRUD;
+using DataAccessLayer.Functions.Specific;
 using DataAccessLayer.Entity;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,13 @@ using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
 using BusinessLogicLayer.Services.Models.Student;
 using BusinessLogicLayer.Services.Interfaces;
-
 namespace BusinessLogicLayer.Services.Implementation
 {
     public class Student_Service : IStudent_Service
     {
         private readonly ICRUD _crud = new CRUD();
+        private IFacultySpecific _faculty = new FacultySpecific();
+        private ISpecialitySpecific _spec = new SpecialitySpecific();
    
 
         public async Task<Generic_ResultSet<List<Student_ResultSet>>> GetAllStudentOfFaculty(int faculty_id)
@@ -130,7 +132,7 @@ namespace BusinessLogicLayer.Services.Implementation
             return result;
         }
 
-        public async Task<int> GetGroupIdByStudentId(int student_id)
+        public async Task<Generic_ResultSet<Student_ResultSet>> GetGroupIdByStudentId(int student_id)
         {
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
@@ -164,7 +166,7 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result.result_set.group_id;
+            return result;
         }
 
         public async Task<Generic_ResultSet<Student_ResultSet>> GetNameAndSurnameByStudentId(int student_id)

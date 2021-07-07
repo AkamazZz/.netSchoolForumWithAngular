@@ -10,10 +10,10 @@ using DataAccessLayer.Functions.Interfaces;
 
 namespace DataAccessLayer.Functions.Specific
 {
-    class StudentSpecific
+    class StudentSpecific: IStudentSpecific
     {
         private IAssessmentSpecific _aspec = new AssessmentSpecific();
-        public async Task<Dictionary<int,int>> GetTop5()
+        public async Task<Dictionary<int,int>> GetTop()
         {
             try
             {
@@ -23,7 +23,6 @@ namespace DataAccessLayer.Functions.Specific
                     List<Student> Student = await context.Students.ToListAsync(); // from db
                     var student_id = from st in Student // after saved in memory , not in db
                                      select st.Student_Id;
-                    List<AssessmentSpecific> Spec = new List<AssessmentSpecific>();
                     int gpa;
                     Dictionary<int, int> student_gpa = new Dictionary<int, int>();
                     foreach (var st_id in student_id)

@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Entity;
-using DataAccessLayer.Entity.Specific;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.DataContext;
 using DataAccessLayer.Functions.Interfaces;
 
 namespace DataAccessLayer.Functions.Specific
 {
-    class FacultySpecific
+    public class FacultySpecific: IFacultySpecific
     {
-        public async Task<Dictionary<int,int>> GetTop5FromFaculty(int faculty_id)
+        public async Task<Dictionary<int,int>> GetTopFromFaculty(int faculty_id)
         {
             IAssessmentSpecific _aspec = new AssessmentSpecific();
             try

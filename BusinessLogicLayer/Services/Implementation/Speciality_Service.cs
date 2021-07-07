@@ -14,7 +14,7 @@ namespace BusinessLogicLayer.Services.Implementation
     {
         private ICRUD _crud = new CRUD();
 
-        public async Task<int> GetFacultyIdBySpecilaityId(int speciliaty_id)
+        public async Task<int> GetFacultyIdBySpecilaityId(int speciality_id)
         {
             Generic_ResultSet<Speciality_ResultSet> result = new Generic_ResultSet<Speciality_ResultSet>();
             try

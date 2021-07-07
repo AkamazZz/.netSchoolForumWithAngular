@@ -10,20 +10,17 @@ using DataAccessLayer.Functions.Interfaces;
 
 namespace DataAccessLayer.Functions.Specific
 {
-    class SpecialitySpecific
+    public class SpecialitySpecific: ISpecialitySpecific
     {
-        public async Task<Dictionary<int,int>> GetTop5FromSpeciliaty(int speciliaty_id)
+        public async Task<Dictionary<int,int>> GetTopFromSpeciliaty(int speciality_id)
         {
             IAssessmentSpecific _aspec = new AssessmentSpecific();
             try
             {
                 using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                 {
-                    
-                    List<Student> Student = await context.Students.Where(f => f.Speciality_Id == speciliaty_id).ToListAsync();
-                    var student_id = from st in Student
-                                     select st.Student_Id;
-                    List<AssessmentSpecific> Spec = new List<AssessmentSpecific>();
+
+                    List<int> student_id = await context.Students.Where(f => f.Speciality_Id == speciality_id).Select(st => st.Student_Id).ToListAsync();
                     int gpa;
                     Dictionary<int, int> student_gpa = new Dictionary<int, int>();
                     foreach (var st_id in student_id)

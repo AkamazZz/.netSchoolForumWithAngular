@@ -10,9 +10,9 @@ using DataAccessLayer.Functions.Interfaces;
 
 namespace DataAccessLayer.Functions.Specific
 {
-    class GroupSpecific
+    public class GroupSpecific: IGroupSpecific
     {
-        public async Task<Dictionary<int,int>> GetTop5FromGroup(int group_id)
+        public async Task<Dictionary<int,int>> GetTopFromGroup(int group_id)
         {
             IAssessmentSpecific _aspec = new AssessmentSpecific();
             try

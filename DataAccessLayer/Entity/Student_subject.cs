@@ -1,7 +1,7 @@
 ﻿using System;
-namespace DataAccessLayer.Entity
     using System.Collections.Generic;
 
+namespace DataAccessLayer.Entity
 {
     public class Student_subject
     {
