@@ -1,0 +1,30 @@
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfo.cs
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.deps.json
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.runtimeconfig.json
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.runtimeconfig.dev.json
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\ref\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.pdb
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\ref\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.pdb
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.genruntimeconfig.cache
+C:\Hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.AssemblyInfo.cs
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.dll
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\ref\DataAccessLayer.dll
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.pdb
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.deps.json
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.runtimeconfig.json
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.runtimeconfig.dev.json
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.dll
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\ref\DataAccessLayer.dll
+C:\Новая папка\university-hierarchy\DataAccessLayer\bin\Debug\net5.0\DataAccessLayer.pdb
+C:\Новая папка\university-hierarchy\DataAccessLayer\obj\Debug\net5.0\DataAccessLayer.genruntimeconfig.cache
