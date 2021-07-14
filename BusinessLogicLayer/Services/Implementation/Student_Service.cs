@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
-using BusinessLogicLayer.Services.Models.Student;
+using BusinessLogicLayer.Services.Models.Students;
 using BusinessLogicLayer.Services.Interfaces;
 namespace BusinessLogicLayer.Services.Implementation
 {
@@ -207,13 +207,13 @@ namespace BusinessLogicLayer.Services.Implementation
             }
             return result;
         }
-        public Generic_ResultSet<List<Student_ResultSet>> GetAllStudentOfGroup(int group_id)
+        public async Task<Generic_ResultSet<List<Student_ResultSet>>> GetAllStudentOfGroup(int group_id)
         {
-            Generic_ResultSet<List<Student_ResultSet>> result = new Generic_ResultSet<List<Student_ResultSet>>();
+            Generic_ResultSet<List<Student_ResultSet>> result =  new Generic_ResultSet<List<Student_ResultSet>>();
             try
             {
                 //GET Student FROM DB
-                List<Student> student =  _group.GetAllFromGroup(group_id);
+                List<Student> student = await  _group.GetAllFromGroup(group_id);
 
                 //MANUAL MAPPING OF RETURNED Student VALUES TO OUR Student_ResultSet
 

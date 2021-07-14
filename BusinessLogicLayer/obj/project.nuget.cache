@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/TnRE893+w2BkMvUD06lhnNeuJrLTYbTuatibrOSE5SWWXx+YNsahTDnvjdPAPJMSuZyr4o7+dgHbNxSE/z7aA==",
+  "dgSpecHash": "uAQTFxbJKUwzTD3KfwzEnJ5g6eqxyWxN5Z1qtFF2mYJmj1oDJ5K+8BMjllWUG8ucN+K7YVRaK93CIR5+b2UrsQ==",
   "success": true,
-  "projectFilePath": "C:\\Новая папка\\university-hierarchy\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+  "projectFilePath": "C:\\Hierarchy\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\akmzz\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\akmzz\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

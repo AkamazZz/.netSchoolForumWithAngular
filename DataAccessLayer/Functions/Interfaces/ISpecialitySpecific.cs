@@ -8,7 +8,7 @@ namespace DataAccessLayer.Functions.Interfaces
     public interface ISpecialitySpecific
     {
 
-        public Task<Dictionary<int, double>> GetTopFromSpeciliaty(int speciliaty_id);
+        public Task<Dictionary<Student, double>> GetTopFromSpeciliaty(int speciliaty_id);
 
     }
 }

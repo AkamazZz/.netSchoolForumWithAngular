@@ -7,7 +7,7 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface IAssessment_Service
     {
-        Task<bool> SetGradeByStudentIdAndSubjectId(int grade, int student_id, int subject_id);
+        Task<Generic_ResultSet<Assessment_ResultSet>> SetGradeByStudentIdAndSubjectId(int grade, int student_id, int subject_id);
         
 
     

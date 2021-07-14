@@ -12,14 +12,14 @@ namespace DataAccessLayer.Functions.Specific
 {
     public class SubjectSpecific: ISubjectSpecific
     { 
-        public async Task<List<string>> SubjectsOfStudent(int student_id)
+        public async Task<List<Subject>> SubjectsOfStudent(int student_id)
         {
             try
             {
                 using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                 {
 
-                    List<string> list = await context.Student_Subjects.Include(s => s.Subject).Where(x => x.Student_Id == student_id).Select(y => y.Subject.Subject_name).ToListAsync();
+                    var list = await context.Student_Subjects.Include(s => s.Subject).Where(x => x.Student_Id == student_id).Select(z => z.Subject).ToListAsync();
                     
                     return list;
                 }

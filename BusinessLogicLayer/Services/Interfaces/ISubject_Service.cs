@@ -10,8 +10,8 @@ namespace BusinessLogicLayer.Services.Interfaces
 {
     public interface ISubject_Service
     {
-        Task<Generic_ResultSet<Subject_ResultSet>> GetSubjectNameBySubjectId(int subject_id);
-        Task<List<string>> GetSubjectsNameByStudentId(int student_id);
+        Task<Generic_ResultSet<Subject_ResultSet>> GetSubjectBySubjectId(int subject_id);
+        Task<Generic_ResultSet<List<Subject_ResultSet>>> GetSubjectsByStudentId(int student_id);
 
 
     }

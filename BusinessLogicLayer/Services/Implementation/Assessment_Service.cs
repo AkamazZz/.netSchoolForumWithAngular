@@ -12,19 +12,25 @@ namespace BusinessLogicLayer.Services.Implementation
     public class Assessment_Service : IAssessment_Service
     {
         private IAssessmentSpecific _iss= new AssessmentSpecific();
-        public async Task<bool> SetGradeByStudentIdAndSubjectId(int grade, int student_id, int subject_id)
+        public async Task<Generic_ResultSet<Assessment_ResultSet>> SetGradeByStudentIdAndSubjectId(int mark, int student_id, int subject_id)
         {
             Generic_ResultSet<Assessment_ResultSet> result = new Generic_ResultSet<Assessment_ResultSet>();
             try
             {
-                Assessment faculty = await _iss.UpdateGradeByStudentIdAndSubjectId(grade,student_id,subject_id);
+                Assessment gradeUpdate = await _iss.UpdateGradeByStudentIdAndSubjectId(mark,student_id,subject_id);
 
-              
+                Assessment_ResultSet assessmentReturned = new Assessment_ResultSet
+                {
+                    assessment_id = gradeUpdate.Assessment_Id,
+                    student_id = gradeUpdate.Student_Id,
+                    subject_id = gradeUpdate.Subject_Id,
+                    grade = gradeUpdate.Grade,
+                };
 
                 //SET SUCCESSFUL RESULT VALUES
-                result.userMessage = string.Format("s");
+                result.userMessage = string.Format($"You have set a new grade");
                 result.internalMessage = "SetGradeByStudentIdAndSubjectId(int grade, int student_id, int subject_id) method executed successfully.";
-                result.result_set = null;
+                result.result_set = assessmentReturned;
                 result.success = true;
             }
             catch (Exception exception)
@@ -35,7 +41,7 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result.success;
+            return result;
         }
     }
 }

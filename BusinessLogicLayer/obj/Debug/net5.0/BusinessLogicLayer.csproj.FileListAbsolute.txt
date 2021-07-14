@@ -13,18 +13,3 @@ C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CopyC
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.dll
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\ref\BusinessLogicLayer.dll
 C:\Hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.pdb
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.deps.json
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.dll
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\ref\BusinessLogicLayer.dll
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\BusinessLogicLayer.pdb
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\DataAccessLayer.dll
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\bin\Debug\net5.0\DataAccessLayer.pdb
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.AssemblyReference.cache
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.GeneratedMSBuildEditorConfig.editorconfig
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfoInputs.cache
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.AssemblyInfo.cs
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.csproj.CopyComplete
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.dll
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\ref\BusinessLogicLayer.dll
-C:\Новая папка\university-hierarchy\BusinessLogicLayer\obj\Debug\net5.0\BusinessLogicLayer.pdb

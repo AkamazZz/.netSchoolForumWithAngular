@@ -6005,11 +6005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Новая папка\\university-hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectUniqueName": "C:\\Hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
       "projectName": "DataAccessLayer",
-      "projectPath": "C:\\Новая папка\\university-hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
+      "projectPath": "C:\\Hierarchy\\DataAccessLayer\\DataAccessLayer.csproj",
       "packagesPath": "C:\\Users\\akmzz\\.nuget\\packages\\",
-      "outputPath": "C:\\Новая папка\\university-hierarchy\\DataAccessLayer\\obj\\",
+      "outputPath": "C:\\Hierarchy\\DataAccessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\akmzz\\AppData\\Roaming\\NuGet\\NuGet.Config",

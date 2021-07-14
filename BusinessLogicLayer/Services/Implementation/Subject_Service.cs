@@ -6,7 +6,7 @@ using DataAccessLayer.Functions.Specific;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
-using BusinessLogicLayer.Services.Models.Student;
+using BusinessLogicLayer.Services.Models.Students;
 using BusinessLogicLayer.Services.Interfaces;
 using BusinessLogicLayer.Services.Models.Subject;
 
@@ -17,7 +17,7 @@ namespace BusinessLogicLayer.Services.Implementation
         private ICRUD _crud = new CRUD();
         private ISubjectSpecific _iss = new SubjectSpecific();
 
-        public async Task<Generic_ResultSet<Subject_ResultSet>> GetSubjectNameBySubjectId(int subject_id)
+        public async Task<Generic_ResultSet<Subject_ResultSet>> GetSubjectBySubjectId(int subject_id)
         {
             Generic_ResultSet<Subject_ResultSet> result = new Generic_ResultSet<Subject_ResultSet>();
             try
@@ -49,13 +49,25 @@ namespace BusinessLogicLayer.Services.Implementation
             return result;
         }
 
-        public async Task<List<string>> GetSubjectsNameByStudentId(int student_id)
+        public async Task<Generic_ResultSet<List<Subject_ResultSet>>> GetSubjectsByStudentId(int student_id)
         {
-            Generic_ResultSet<Subject_ResultSet> result = new Generic_ResultSet<Subject_ResultSet>();
-            var subjects = await _iss.SubjectsOfStudent(student_id);
+            Generic_ResultSet<List<Subject_ResultSet>> result = new Generic_ResultSet<List<Subject_ResultSet>>();
+            
             try
             {
+                var subjects = await _iss.SubjectsOfStudent(student_id);
                 
+                result.result_set = new List<Subject_ResultSet>();
+                subjects.ForEach(s =>
+                {
+                    {
+                        result.result_set.Add(new Subject_ResultSet
+                        {
+                            subject_id = s.Subject_Id,
+                            subject_name = s.Subject_name,
+                        });
+                    }
+                });
 
                 result.userMessage = string.Format("s");
                 result.internalMessage = "GetSybjectIdBySubjectName() method executed successfully.";
@@ -69,7 +81,7 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return subjects;
+            return result;
         }
     }
 }

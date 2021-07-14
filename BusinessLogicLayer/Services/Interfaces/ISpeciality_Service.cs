@@ -10,9 +10,9 @@ namespace BusinessLogicLayer.Services.Interfaces
     {
 
         Task<Generic_ResultSet<List<Speciality_ResultSet>>> GetAllSpecialities();
-        Task<string> GetSpecilaityNameBySpecilaityId(int speciliaty_id);
+        Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecilaityNameBySpecilaityId(int speciliaty_id);
 
-        Task<int> GetFacultyIdBySpecilaityId(int speciliaty_id);
+        Task<Generic_ResultSet<Speciality_ResultSet>> GetFacultyIdBySpecilaityId(int speciliaty_id);
 
         Task<Generic_ResultSet<Speciality_ResultSet>> GetTopByGpaInSpeciality(int speciality_id);
     }

@@ -52,7 +52,7 @@ namespace BusinessLogicLayer.Services.Implementation
             }
             return result;
         }
-        public async Task<int> GetFacultyIdBySpecilaityId(int speciality_id)
+        public async Task<Generic_ResultSet<Speciality_ResultSet>> GetFacultyIdBySpecilaityId(int speciality_id)
         {
             Generic_ResultSet<Speciality_ResultSet> result = new Generic_ResultSet<Speciality_ResultSet>();
             try
@@ -81,11 +81,11 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result.result_set.speciality_id;
+            return result;
             
         }
 
-        public async Task<string> GetSpecilaityNameBySpecilaityId(int speciality_id)
+        public async Task<Generic_ResultSet<Speciality_ResultSet>> GetSpecilaityNameBySpecilaityId(int speciality_id)
         {
             Generic_ResultSet<Speciality_ResultSet> result = new Generic_ResultSet<Speciality_ResultSet>();
             try
@@ -114,7 +114,7 @@ namespace BusinessLogicLayer.Services.Implementation
                 result.internalMessage = string.Format("{0}", exception.Message);
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
-            return result.result_set.speciality_name;
+            return result;
                 
         }
         public async Task<Generic_ResultSet<Speciality_ResultSet>> GetTopByGpaInSpeciality(int speciality_id)

@@ -6,7 +6,7 @@ using DataAccessLayer.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessLogicLayer.Services.Models;
-using BusinessLogicLayer.Services.Models.Student;
+using BusinessLogicLayer.Services.Models.Students;
 using BusinessLogicLayer.Services.Interfaces;
 using BusinessLogicLayer.Services.Models.Group;
 
