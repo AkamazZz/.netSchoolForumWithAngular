@@ -292,16 +292,16 @@ namespace BusinessLogicLayer.Services.Implementation
 
 
                 
-                result.userMessage = string.Format("Students from {0} group");
-                result.internalMessage = "GetAllStudentOfFaculty(int faculty_id) method executed successfully.";
+                result.userMessage = string.Format("Here is the students");
+                result.internalMessage = "GetAllStudent() method executed successfully.";
                 result.success = true;
             }
             catch (Exception exception)
             {
                 //SET FAILED RESULT VALUES
                 result.exception = exception;
-                result.userMessage = "This faculty doesn't exist";
-                result.internalMessage = string.Format("ERROR: GetAllStudentOfFaculty(int faculty_id): {0}", exception.Message);
+                result.userMessage = "No students here";
+                result.internalMessage = string.Format($"ERROR: GetAllStudent(): {exception.Message}");
                 //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
             }
             return result;
