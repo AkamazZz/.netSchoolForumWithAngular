@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupResult } from 'models/group-result.model';
+import { Group } from 'models/group.model';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-group',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowGroupComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:SharedService) { }
+  GroupList: GroupResult = new GroupResult();
   ngOnInit(): void {
+    this.refreshGroupList();
   }
-
+  async refreshGroupList(){
+    await this.service.getGroupList().then((data) => {
+      
+      if (data.success) {
+       this.GroupList=data;
+       
+    
+      } else {
+        alert(data.userMessage);
+      }
+      })
+  }
 }

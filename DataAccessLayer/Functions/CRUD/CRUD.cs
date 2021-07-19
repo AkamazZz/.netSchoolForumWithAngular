@@ -46,7 +46,23 @@ namespace DataAccessLayer.Functions.CRUD
                 }
             }
 
-         
+        public T ReadSync<T>(int entityId) where T : class
+        {
+            try
+            {
+                using (DatabaseContext context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+                    T result = context.Find<T>(entityId);
+                    return result;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         public async Task<List<T>> ReadAll<T>() where T : class
             {
                 try

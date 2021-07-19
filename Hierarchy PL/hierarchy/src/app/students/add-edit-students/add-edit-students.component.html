@@ -1,1 +1,49 @@
-<p>add-edit-students works!</p>
+<h1 class="text-center">Application Form</h1>
+<div id="applyform" [ngClass]="disabled">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" [ngModel]="currentStudent.student_name"
+        (ngModelChange)="currentStudent.student_name = $event">
+    </div>
+    <div class="col-md-6">
+      <label for="surname">Surname</label>
+      <input type="text" class="form-control" id="surname" placeholder="Surname"
+        [ngModel]="currentStudent.student_surname"
+        (ngModelChange)="currentStudent.student_surname = $event">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="faculty">Faculty</label>
+      <input type="text" class="form-control" id="faculty" placeholder="Faculty"
+        [ngModel]="currentStudent.faculty_id"
+        (ngModelChange)="currentStudent.faculty_id = $event">
+    </div>
+    <div class="col-md-6">
+      <label for="speciality">Speciality</label>
+      <input type="text" class="form-control" id="speciality" placeholder="Speciality"
+        [ngModel]="currentStudent.speciality_id" (ngModelChange)="currentStudent.speciality_id = $event">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label for="group">Group</label>
+      <input type="text" class="form-control" id="group" placeholder="Group"
+        [ngModel]="currentStudent.group_id"
+        (ngModelChange)="currentStudent.group_id = $event">
+    </div>
+    
+  </div>
+ 
+    <div class="row">
+      <div class="d-grid p-2">
+        <button class="btn btn-primary btn-block" type="button" (click)="SubmitApplication()">Submit student</button>
+        <div [ngClass]="load" align="center">
+          <strong>Working...</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  

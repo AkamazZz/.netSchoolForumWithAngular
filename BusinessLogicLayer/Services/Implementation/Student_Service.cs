@@ -170,7 +170,49 @@ namespace BusinessLogicLayer.Services.Implementation
             }
             return result;
         }
+        public async Task<Generic_ResultSet<Student_ResultSet>> AddSingleStudent(int speciality_id, int faculty_id, int group_id, string name, string surname )
+        {
+            Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
+            try
+            {
+                //GET Student FROM DB
+                Student student = new Student{
+                    University_Id =1,
+                    Speciality_Id = speciality_id,
+                    Faculty_Id = faculty_id,
+                    Group_Id=group_id,
+                    FirstName = name,
+                    LastName=surname,
+                    };
+                student = await _crud.Create<Student>(student);
+                //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
+                Student_ResultSet studentReturned = new Student_ResultSet
+                {
+                    student_id = student.Student_Id,
+                    university_id = student.University_Id,
+                    speciality_id = student.Speciality_Id,
+                    faculty_id = student.Faculty_Id,
+                    group_id = student.Group_Id,
+                    student_name = student.FirstName,
+                    student_surname = student.LastName,
+                };
 
+                //SET SUCCESSFUL RESULT VALUES
+                result.userMessage = string.Format("s");
+                result.internalMessage = "AddSingleStudent() method executed successfully.";
+                
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "This student doesn't exist";
+                result.internalMessage = string.Format("{0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return result;
+        }
         public async Task<Generic_ResultSet<Student_ResultSet>> GetNameAndSurnameByStudentId(int student_id)
         {
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
@@ -214,6 +256,7 @@ namespace BusinessLogicLayer.Services.Implementation
             {
                 //GET Student FROM DB
                 List<Student> student = await  _group.GetAllFromGroup(group_id);
+
 
                 //MANUAL MAPPING OF RETURNED Student VALUES TO OUR Student_ResultSet
 
@@ -270,22 +313,30 @@ namespace BusinessLogicLayer.Services.Implementation
                 //GET Student FROM DB
                 List<Student> student = await _crud.ReadAll<Student>();
 
+
                 //MANUAL MAPPING OF RETURNED Student VALUES TO OUR Student_ResultSet
 
                 result.result_set = new List<Student_ResultSet>();
-                student.ForEach(s =>
+                student.ForEach( s =>
                 {
+                    Faculty faculty = _crud.ReadSync<Faculty>(s.Faculty_Id);
+                    Speciality spec =  _crud.ReadSync<Speciality>(s.Speciality_Id);
+                    Group group =  _crud.ReadSync<Group>(s.Group_Id);
+
                     {
                         result.result_set.Add(new Student_ResultSet
                         {
                             student_id = s.Student_Id,
                             university_id = s.University_Id,
                             speciality_id = s.Speciality_Id,
+                            speciality_name = spec.Speciality_name,
                             faculty_id = s.Faculty_Id,
+                            faculty_name = faculty.Faculty_name,
                             group_id = s.Group_Id,
+                            group_name = group.Group_Name,
                             student_name = s.FirstName,
                             student_surname = s.LastName,
-                        });
+                        }) ;
                     }
                 });
 

@@ -5,7 +5,9 @@ export class Students {
     faculty_id: number;
     faculty_name:string;
     speciality_id:number;
+    speciality_name: string;
     group_id:number;
+    group_name: string;
     student_name:string;
     student_surname: string;
 }

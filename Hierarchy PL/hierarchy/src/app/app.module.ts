@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentsComponent } from './students/students.component';
@@ -25,6 +24,7 @@ import { AddEditStudentsComponent } from './students/add-edit-students/add-edit-
 import {SharedService} from './shared.service';
 import { GroupComponent } from './group/group.component';
 import { ShowGroupComponent } from './group/show-group/show-group.component';
+import { AddEditGroupComponent } from './group/add-edit-group/add-edit-group.component';
 
 @NgModule({
   declarations: [
@@ -46,19 +46,23 @@ import { ShowGroupComponent } from './group/show-group/show-group.component';
     ShowStudentsComponent,
     AddEditStudentsComponent,
     GroupComponent,
-    ShowGroupComponent
+    ShowGroupComponent,
+    AddEditGroupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
-   /* RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'students', component: StudentsComponent},
-    ])*/
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {path: 'ApplyStudent', component: AddEditStudentsComponent},
+    ])
   ],
   providers: [SharedService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }

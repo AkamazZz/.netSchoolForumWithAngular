@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-edit-speciality',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditSpecialityComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:SharedService) { }
+  //@Input() speciality:any;
   ngOnInit(): void {
   }
 

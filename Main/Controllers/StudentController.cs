@@ -27,6 +27,20 @@ namespace Hierarchy.Controllers
             _student_Service = student_Service;
         }
 
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> AddStudent(int faculty_id, int speciality_id, int group_id, string name, string surname)
+        {
+            var result = await _student_Service.AddSingleStudent(speciality_id, faculty_id, group_id, name, surname);
+            switch (result.success)
+            {
+                case true:
+                    return Ok(result);
+                case false:
+                    return StatusCode(500, result);
+            }
+        }
+
 
         [HttpGet]
         [Route("[action]")]
