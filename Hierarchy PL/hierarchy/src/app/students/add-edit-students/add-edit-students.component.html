@@ -1,48 +1,71 @@
-<h1 class="text-center">Application Form</h1>
+
 <div id="applyform" [ngClass]="disabled">
   <div class="row">
     <div class="col-md-6">
-      <label for="name">First Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name" [ngModel]="currentStudent.student_name"
-        (ngModelChange)="currentStudent.student_name = $event">
+      <label for="name">Name</label>
+      <input type="text" *ngIf="student.student_id==null" class="form-control" id="name" placeholder="Name" [ngModel]="currentStudent.student_name" (ngModelChange)="currentStudent.student_name= $event"    >
+        
+      <input type="text" *ngIf="student.student_id!=null" class="form-control" id="name" placeholder="Name" [ngModel]="student.student_name" (ngModelChange)="student.student_name= $event"    >
     </div>
     <div class="col-md-6">
       <label for="surname">Surname</label>
-      <input type="text" class="form-control" id="surname" placeholder="Surname"
-        [ngModel]="currentStudent.student_surname"
-        (ngModelChange)="currentStudent.student_surname = $event">
+      <input type="text" *ngIf="student.student_id==null" class="form-control" id="surname" placeholder="Surname" [ngModel]="currentStudent.student_surname" (ngModelChange)="currentStudent.student_surname= $event">
+  
+      <input type="text" *ngIf="student.student_id!=null" class="form-control" id="surname" placeholder="Surname" [ngModel]="student.student_surname" (ngModelChange)="student.student_surname= $event">
+
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <label for="faculty">Faculty</label>
-      <input type="text" class="form-control" id="faculty" placeholder="Faculty"
-        [ngModel]="currentStudent.faculty_id"
-        (ngModelChange)="currentStudent.faculty_id = $event">
+      <select  class="form-control" *ngIf="student.student_id==null" id="faculty" placeholder="Faculty"
+        [ngModel]="currentStudent.faculty_id" (ngModelChange)="currentStudent.faculty_id = $event"> 
+    <option *ngFor="let faculties of FacultyList.result_set" [value] = "faculties.faculty_id">
+        {{faculties.faculty_name}}
+    </option></select> 
+
+    <select  class="form-control" *ngIf="student.student_id!=null" id="faculty" placeholder="Faculty"
+        [ngModel]="student.faculty_id" (ngModelChange)="student.faculty_id = $event"> 
+    <option *ngFor="let faculties of FacultyList.result_set" [value] = "faculties.faculty_id">
+        {{faculties.faculty_name}}
+    </option></select> 
+
     </div>
     <div class="col-md-6">
       <label for="speciality">Speciality</label>
-      <input type="text" class="form-control" id="speciality" placeholder="Speciality"
+      <select  class="form-control" *ngIf="student.student_id==null" id="speciality" placeholder="Speciality"
         [ngModel]="currentStudent.speciality_id" (ngModelChange)="currentStudent.speciality_id = $event">
+    <option *ngFor="let specialities of SpecialityList.result_set" [value] = "specialities.speciality_id">{{specialities.speciality_name}}</option>
+    </select>   
+
+    <select  class="form-control" *ngIf="student.student_id!=null" id="speciality" placeholder="Speciality"
+    [ngModel]="student.speciality_id" (ngModelChange)="student.speciality_id = $event">
+<option *ngFor="let specialities of SpecialityList.result_set" [value] = "specialities.speciality_id">{{specialities.speciality_name}}</option>
+</select>   
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
       <label for="group">Group</label>
-      <input type="text" class="form-control" id="group" placeholder="Group"
-        [ngModel]="currentStudent.group_id"
-        (ngModelChange)="currentStudent.group_id = $event">
-    </div>
+      <select class="form-control" *ngIf="student.student_id==null" id="group" placeholder="Group"
+        [ngModel]="currentStudent.group_id" (ngModelChange)="currentStudent.group_id = $event"
+        >
+        <option *ngFor="let groups of GroupList.result_set" [value]="groups.group_id">{{groups.group_name}}</option>
+    </select>
     
+    <select class="form-control" *ngIf="student.student_id!=null" id="group" placeholder="Group"
+    [ngModel]="student.group_id" (ngModelChange)="student.group_id = $event"
+    >
+    <option *ngFor="let groups of GroupList.result_set" [value]="groups.group_id">{{groups.group_name}}</option>
+</select>
   </div>
  
     <div class="row">
       <div class="d-grid p-2">
-        <button class="btn btn-primary btn-block" type="button" (click)="SubmitApplication()">Submit student</button>
-        <div [ngClass]="load" align="center">
-          <strong>Working...</strong>
-        </div>
+        <button class="btn btn-primary btn-block" *ngIf="student.student_id==null" type="button" (click)="SubmitApplication()">Submit student</button>
+
+        <button class="btn btn-primary btn-block" *ngIf="student.student_id!=null" type="button">Change student</button>
       </div>
     </div>
   </div>

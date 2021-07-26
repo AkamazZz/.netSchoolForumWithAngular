@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , TemplateRef} from '@angular/core';
 import { StudentsResult } from 'models/students-result.model';
+import { Students } from 'models/students.model';
 import { SharedService } from 'src/app/shared.service';
+import {BsModalRef} from 'ngx-bootstrap/modal';
 
 
+
+declare var $: any;
 @Component({
   selector: 'app-show-students',
   templateUrl: './show-students.component.html',
@@ -18,7 +22,7 @@ export class ShowStudentsComponent implements OnInit {
     
   }
   
-  
+  ModalTitle: string;
  async refreshStudentList(){
 
     
@@ -36,8 +40,29 @@ await this.service.getStudentList().then((data) => {
   
   
 }
+ActivateAddStudentComp:boolean=false;
+ActivateEditStudentComp:Boolean=false;
+student:Students = new Students();
+modalRef:BsModalRef;
 
 
+
+show_add(){
+  this.ModalTitle="Apply a new student";
+  this.ActivateAddStudentComp=true;
+}
+close(){
+  this.ActivateAddStudentComp=false;
+  this.ActivateEditStudentComp = false;
+  this.refreshStudentList();
+}
+show_edit(item:Students){
+  this.student = item;
+  this.ModalTitle="Edit student";
+  this.ActivateEditStudentComp = true;
+
+
+}
 }
 
 

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using Hierarchy.Models.Student;
 
 namespace Hierarchy.Controllers
 
@@ -29,9 +30,9 @@ namespace Hierarchy.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddStudent(int faculty_id, int speciality_id, int group_id, string name, string surname)
+        public async Task<IActionResult> AddStudent(Student_Pass_Object student)
         {
-            var result = await _student_Service.AddSingleStudent(speciality_id, faculty_id, group_id, name, surname);
+            var result = await _student_Service.AddSingleStudent(student.speciality_id, student.faculty_id, student.group_id, student.student_name, student.student_surname);
             switch (result.success)
             {
                 case true:

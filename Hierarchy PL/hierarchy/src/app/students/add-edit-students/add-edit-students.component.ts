@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FacultyResult } from 'models/faculty-result.model';
+import { Faculty } from 'models/faculty.model';
+import { GroupResult } from 'models/group-result.model';
+import { Group } from 'models/group.model';
+import { SpecialityResult } from 'models/speciality-result.model';
 import { StudentsResult } from 'models/students-result.model';
 import { Students } from 'models/students.model';
 import { SharedService } from 'src/app/shared.service';
@@ -12,12 +17,52 @@ export class AddEditStudentsComponent implements OnInit {
   currentStudent: Students = new Students();
   load: string = 'no-show';
   disabled: string = '';
-
+  @Input() student:Students= new Students();
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
+    this.refreshGroupList();
+    this.RefreshSpecialityList();
+    this.RefreshFacultyList();
   }
+  FacultyList: FacultyResult = new FacultyResult();
+  async RefreshFacultyList(){
+    await this.service.getFacultyList().then((data) =>{
+      if (data.success) {
+        this.FacultyList=data;
+        
+     
+       } else {
+         alert(data.userMessage);
+       }
+    })
+  }
+  SpecialityList: SpecialityResult = new SpecialityResult();
+  async RefreshSpecialityList(){
 
+    await this.service.getSpecialityList().then((data) => {
+        
+      if (data.success) {
+       this.SpecialityList=data;
+       
+    
+      } else {
+        alert(data.userMessage);
+      }
+  });
+    }
+  GroupList: GroupResult = new GroupResult();
+  async refreshGroupList(){
+    await this.service.getGroupList().then((data) => {
+      
+      if (data.success) {
+       this.GroupList=data;
+    
+      } else {
+        alert(data.userMessage);
+      }
+      })
+  }
 CurrentStudent: Students;
   async SubmitApplication() {
     let result = new StudentsResult();

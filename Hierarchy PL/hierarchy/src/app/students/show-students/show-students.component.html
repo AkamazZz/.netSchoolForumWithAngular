@@ -1,28 +1,21 @@
-
-
-
-
 <button type="button" class="btn btn-primary float-right m-2" 
 data-toggle="modal" data-target="#exampleModal"
-
+(click)="Modal.show()" (click)="show_add()"
 data-backdrop="static" data-keyboard="false"
->
-    Add Student
-  </button>
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+>Add Student</button>
+<div mdbModal #Modal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          
-          
+       
+        <div class="modal-body">
+          <h1 class="text-center">{{ModalTitle}}</h1>
+            <app-add-edit-students [student] = "student" ></app-add-edit-students>
           
         </div>
         
       </div>
     </div>
   </div>
-
 
 
 <table class="table table-striped">
@@ -38,17 +31,17 @@ data-backdrop="static" data-keyboard="false"
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let student of StudentList.result_set">
-            <td>{{student.student_id}}</td>
-            <td>{{student.student_name}}</td>
-            <td>{{student.student_surname}}</td>
-            <td>{{student.faculty_name}}</td>  
-            <td>{{student.speciality_name}}</td>
-            <td>{{student.group_name}}</td>      
+        <tr *ngFor="let st of StudentList.result_set">
+            <td>{{st.student_id}}</td>
+            <td>{{st.student_name}}</td>
+            <td>{{st.student_surname}}</td>
+            <td>{{st.faculty_name}}</td>  
+            <td>{{st.speciality_name}}</td>
+            <td>{{st.group_name}}</td>      
             <td>
                 <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
-
+                 (click)="Modal.show()"  (click)="show_edit(st)"
 data-backdrop="static" data-keyboard="false"
                 >
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +50,6 @@ data-backdrop="static" data-keyboard="false"
                 </svg>
                 </button>
                 <button type="button" class="btn btn-light mr-1"
-                
                 >
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>

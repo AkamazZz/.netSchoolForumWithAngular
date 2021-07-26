@@ -7,14 +7,15 @@ import { Faculty } from 'models/faculty.model';
 import { SpecialityResult } from 'models/speciality-result.model';
 import { GroupResult } from 'models/group-result.model';
 import { Students } from 'models/students.model';
-
+import { BsModalService } from 'ngx-bootstrap/modal';
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 readonly APIUrl = "http://localhost:52865/api";
   constructor(private http:HttpClient) { }
-
+  
+  modal: BsModalService;
   async getStudentList():Promise<StudentsResult>{
       return await this.http.get<StudentsResult>(this.APIUrl + '/Student/GetAllStudents').toPromise();
   }
@@ -34,7 +35,7 @@ readonly APIUrl = "http://localhost:52865/api";
     return await this.http.get<GroupResult>(this.APIUrl + '/Group/GetEachGroup').toPromise();
   }
   async AddStudent(student:Students):Promise<any>{
-    return await this.http.post<any>(this.APIUrl + '/Student/AddStudent', student, {}).toPromise;
+    return await this.http.post<any>(this.APIUrl + '/Student/AddStudent', student, {}).toPromise();
     
   }
 }

@@ -25,6 +25,8 @@ import {SharedService} from './shared.service';
 import { GroupComponent } from './group/group.component';
 import { ShowGroupComponent } from './group/show-group/show-group.component';
 import { AddEditGroupComponent } from './group/add-edit-group/add-edit-group.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -54,9 +56,12 @@ import { AddEditGroupComponent } from './group/add-edit-group/add-edit-group.com
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MDBBootstrapModule.forRoot(),
+
     RouterModule.forRoot([
       {path: 'ApplyStudent', component: AddEditStudentsComponent},
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],
