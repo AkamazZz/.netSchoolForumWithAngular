@@ -1,15 +1,18 @@
 <button type="button" class="btn btn-primary float-right m-2" 
-data-toggle="modal" data-target="#exampleModal"
-(click)="Modal.show()" (click)="show_add()"
-data-backdrop="static" data-keyboard="false"
+data-toggle="modal" data-target="#Modal"
+ (click)="show_add()"  mdbWaverEffect
 >Add Student</button>
-<div mdbModal #Modal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+<div mdbModal #Modal="mdbModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" [config] = "{backdrop: 'static'}"  >
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document" >
       <div class="modal-content">
-       
-        <div class="modal-body">
-          <h1 class="text-center">{{ModalTitle}}</h1>
-            <app-add-edit-students [student] = "student" ></app-add-edit-students>
+       <div class="modal-header">
+        <h1 class="modal-title">{{ModalTitle}}</h1>
+        <button type="button" class = "btn-close" data-mdb-dismiss="modal" aria-label="Close" (click) = "close()" ></button>
+       </div>
+        <div class="modal-body" >
+          
+          
+            <app-add-edit-students [student] = "student" [ActivateAddStudentComp] = "ActivateAddStudentComp"  [ActivateEditStudentComp] = "ActivateEditStudentComp"></app-add-edit-students>
           
         </div>
         
@@ -21,13 +24,37 @@ data-backdrop="static" data-keyboard="false"
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Faculty</th>
-            <th>Speciality</th>
-            <th>Group</th>
-            <th>Options</th>
+          <th *ngFor="let head of SortElements; let i = index" aria-controls="tableSort" scope="col" [mdbTableSort]="StudentList.result_set" [sortBy] = "SortElements[i]">
+            
+            <div class = "d-flex flex-row">
+              <input class = "form-control" placeholder="Filter">
+
+            </div>
+            Id <mdb-icon fas icon="sort"></mdb-icon></th>
+            <th>
+          <div class = "d-flex flex-row">
+            <input class = "form-control" placeholder="Filter">
+
+            </div>
+            Name</th>
+            <th>
+            <div class = "d-flex flex-row">
+              <input class = "form-control" placeholder="Filter">
+  
+              </div>
+              Surname</th>
+              <th>
+              <div class = "d-flex flex-row">
+                <input class = "form-control" placeholder="Filter">
+                </div>Faculty</th>
+                <th>
+                <div class = "d-flex flex-row">
+                  <input class = "form-control" placeholder="Filter"> </div>Speciality</th>
+                  <th>
+                  <div class = "d-flex flex-row">
+                    <input class = "form-control" placeholder="Filter"> </div>Group</th>
+                    <th>Options</th>
+          
         </tr>
     </thead>
     <tbody>
@@ -41,8 +68,8 @@ data-backdrop="static" data-keyboard="false"
             <td>
                 <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
-                 (click)="Modal.show()"  (click)="show_edit(st)"
-data-backdrop="static" data-keyboard="false"
+                (click)="show_edit(st)"
+
                 >
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -50,6 +77,8 @@ data-backdrop="static" data-keyboard="false"
                 </svg>
                 </button>
                 <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click)="delete_student(st)"
                 >
                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FacultyResult } from 'models/faculty-result.model';
 import { Faculty } from 'models/faculty.model';
 import { GroupResult } from 'models/group-result.model';
@@ -6,19 +6,30 @@ import { Group } from 'models/group.model';
 import { SpecialityResult } from 'models/speciality-result.model';
 import { StudentsResult } from 'models/students-result.model';
 import { Students } from 'models/students.model';
+import { ModalContainerComponent, ModalDirective } from 'ngx-bootstrap/modal';
 import { SharedService } from 'src/app/shared.service';
+import { ShowStudentsComponent } from '../show-students/show-students.component';
+
 
 @Component({
   selector: 'app-add-edit-students',
   templateUrl: './add-edit-students.component.html',
   styleUrls: ['./add-edit-students.component.css']
+
 })
-export class AddEditStudentsComponent implements OnInit {
+export class AddEditStudentsComponent  implements OnInit {
+
   currentStudent: Students = new Students();
-  load: string = 'no-show';
+  showStudent:ShowStudentsComponent;
+  load: string = 'visibility:hidden';
   disabled: string = '';
   @Input() student:Students= new Students();
-  constructor(private service:SharedService) { }
+  @Input() ActivateAddStudentComp:Boolean;
+  @Input() ActivateEditStudentComp:Boolean;
+  isChanged: Boolean = false;
+   constructor(private service:SharedService) {
+     
+    }
 
   ngOnInit(): void {
     this.refreshGroupList();
@@ -64,7 +75,7 @@ export class AddEditStudentsComponent implements OnInit {
       })
   }
 CurrentStudent: Students;
-  async SubmitApplication() {
+  async SubmitStudent() {
     let result = new StudentsResult();
     this.disabled = 'disabled';
     this.load = '';
@@ -73,13 +84,44 @@ CurrentStudent: Students;
       .then((data) => {
         result.success = data.success;
         result.userMessage = data.userMessage;
-        let id = data.result_set[0].student_id;
         if (result.success) {
-          alert('Your reference code is: application' + id);
+          alert('We have added a new student to database');
+          this.isChanged = true;
         } else {
           alert(result.userMessage);
         }
+      
+        
         this.CurrentStudent = new Students();
+      })
+      .catch((error) => {
+        alert(
+            ' Please make sure you have provided all the values'
+        );
+      });
+    this.disabled = '';
+    this.load = "visibility:hidden";
+  }
+
+  async UpdateStudent() {
+    let result = new StudentsResult();
+    this.disabled = 'disabled';
+    this.load = "";
+     this.service
+      .UpdateStudent(this.student)
+      .then((data) => {
+        result.success = data.success;
+        result.userMessage = data.userMessage;
+  
+        if (result.success) {
+          alert('Reference code is: ' + this.student.student_id);
+          this.isChanged = true;
+        } else {
+          alert(result.userMessage);
+        }
+      
+        this.student = new Students();
+        this.showStudent.close();
       })
       .catch((error) => {
         alert(
@@ -88,7 +130,8 @@ CurrentStudent: Students;
         );
       });
     this.disabled = '';
-    this.load = 'no-show';
+    this.load = "'visibility:hidden'";
+    
   }
 }
   

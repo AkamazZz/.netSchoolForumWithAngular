@@ -18,7 +18,30 @@ namespace BusinessLogicLayer.Services.Implementation
         private ISpecialitySpecific _spec = new SpecialitySpecific();
         private IGroupSpecific _group = new GroupSpecific();
         private IStudentSpecific _student = new StudentSpecific();
-   
+
+
+        public async Task<Generic_ResultSet<Student_ResultSet>> GetTopOfStudents()
+        {
+            Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
+            try
+            {
+                var student = await _student.GetTop();
+
+                result.userMessage = string.Format("Top is provided");
+                result.internalMessage = "GetTopOfStudents() method executed successfully.";
+                result.success = true;
+                result.result_set_dictionary = student;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "There is no students";
+                result.internalMessage = string.Format("ERROR: GetTopOfStudents(): {0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return result;
+        }
 
         public async Task<Generic_ResultSet<List<Student_ResultSet>>> GetAllStudentOfFaculty(int faculty_id)
         {
@@ -170,6 +193,75 @@ namespace BusinessLogicLayer.Services.Implementation
             }
             return result;
         }
+        public async Task<Generic_ResultSet<Student_ResultSet>> UpdateStudent(int student_id, int faculty_id, int speciality_id, int group_id , string name, string surname)
+        {
+            Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
+            try
+            {
+                //GET Student FROM DB
+                Student studentToUpdate = new Student
+                {
+                    Student_Id = student_id,
+                    University_Id = 1,
+                    Speciality_Id = speciality_id,
+                    Faculty_Id = faculty_id,
+                    Group_Id = group_id,
+                    FirstName = caseConversion.firstCaseToUpper(name),
+                    LastName = caseConversion.firstCaseToUpper(surname),
+                };
+                studentToUpdate = await _crud.Update<Student>(studentToUpdate, student_id);
+                //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
+                Student_ResultSet studentReturned = new Student_ResultSet
+                {
+                    student_id = studentToUpdate.Student_Id,
+                    university_id = studentToUpdate.University_Id,
+                    speciality_id = studentToUpdate.Speciality_Id,
+                    faculty_id = studentToUpdate.Faculty_Id,
+                    group_id = studentToUpdate.Group_Id,
+                    student_name = studentToUpdate.FirstName,
+                    student_surname = studentToUpdate.LastName,
+                };
+
+                //SET SUCCESSFUL RESULT VALUES
+                result.userMessage = string.Format($"Student {studentReturned.student_name} {studentReturned.student_surname} has been changed");
+                result.internalMessage = "UpdateStudent() method executed successfully.";
+
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "This student doesn't exist";
+                result.internalMessage = string.Format("{0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return result;
+        }
+        public async Task<Generic_ResultSet<Student_ResultSet>> DeleteStudent(int student_id)
+        {
+            Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
+            try
+            {
+                var isDeleted = await _crud.Delete<Student>(student_id);
+                
+
+                //SET SUCCESSFUL RESULT VALUES
+                result.userMessage = string.Format("The student has been deleted");
+                result.internalMessage = "DeleteStudent() method executed successfully.";
+
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                //SET FAILED RESULT VALUES
+                result.exception = exception;
+                result.userMessage = "This student doesn't exist";
+                result.internalMessage = string.Format("{0}", exception.Message);
+                //Success by default is set to false & its always the last value we set in the try block, so we should never need to set it in the catch block.
+            }
+            return result;
+        }
         public async Task<Generic_ResultSet<Student_ResultSet>> AddSingleStudent(int speciality_id, int faculty_id, int group_id, string name, string surname )
         {
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
@@ -181,8 +273,8 @@ namespace BusinessLogicLayer.Services.Implementation
                     Speciality_Id = speciality_id,
                     Faculty_Id = faculty_id,
                     Group_Id=group_id,
-                    FirstName = name,
-                    LastName=surname,
+                    FirstName = caseConversion.firstCaseToUpper(name),
+                    LastName = caseConversion.firstCaseToUpper(surname),
                     };
                 student = await _crud.Create<Student>(student);
                 //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet

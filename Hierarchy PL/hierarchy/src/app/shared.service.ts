@@ -34,8 +34,13 @@ readonly APIUrl = "http://localhost:52865/api";
   async getGroupList():Promise<GroupResult>{
     return await this.http.get<GroupResult>(this.APIUrl + '/Group/GetEachGroup').toPromise();
   }
-  async AddStudent(student:Students):Promise<any>{
-    return await this.http.post<any>(this.APIUrl + '/Student/AddStudent', student, {}).toPromise();
-    
+  async AddStudent(student:Students):Promise<StudentsResult>{
+    return await this.http.post<StudentsResult>(this.APIUrl + '/Student/AddStudent', student, {}).toPromise();
+  }
+  async UpdateStudent(student:Students):Promise<StudentsResult>{
+    return await this.http.put<StudentsResult>(this.APIUrl+'/Student/UpdateStudent', student).toPromise();
+  }
+  async DeleteStudent(student_id:number):Promise<StudentsResult>{
+    return await this.http.delete<StudentsResult>(this.APIUrl+'/Student/DeleteStudent?student_id=' + student_id).toPromise();
   }
 }

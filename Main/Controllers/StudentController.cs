@@ -27,12 +27,52 @@ namespace Hierarchy.Controllers
         {
             _student_Service = student_Service;
         }
-
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetTopByGPA()
+        {
+            var result = await _student_Service.GetTopOfStudents();
+            switch (result.success)
+            {
+                case true:
+                    return Ok(result);
+                case false:
+                    return StatusCode(500, result);
+            }
+        }
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> AddStudent(Student_Pass_Object student)
         {
             var result = await _student_Service.AddSingleStudent(student.speciality_id, student.faculty_id, student.group_id, student.student_name, student.student_surname);
+            switch (result.success)
+            {
+                case true:
+                    return Ok(result);
+                case false:
+                    return StatusCode(500, result);
+            }
+        }
+       
+        [HttpDelete]
+        [Route("[action]")]
+        public async Task<IActionResult> DeleteStudent(int student_id)
+        {
+            var result = await _student_Service.DeleteStudent(student_id);
+            switch (result.success)
+            {
+                case true:
+                    return Ok(result);
+                case false:
+                    return StatusCode(500, result);
+            }
+        }
+        [HttpPut]
+        [Route("[action]")]
+
+        public async Task<IActionResult> UpdateStudent(Student_Update_Object student)
+        {
+            var result = await _student_Service.UpdateStudent(student.student_id, student.faculty_id, student.speciality_id, student.group_id, student.student_name, student.student_surname);
             switch (result.success)
             {
                 case true:

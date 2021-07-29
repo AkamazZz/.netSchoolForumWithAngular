@@ -25,7 +25,7 @@ namespace DataAccessLayer.Functions.Specific
             }
         }
 
-        public async Task<Dictionary<Student , double>> GetTop()
+        public async Task<Dictionary<Student,double>> GetTop()
         {
             try
             {
