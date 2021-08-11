@@ -21,7 +21,7 @@ namespace Hierarchy.Controllers
     [ApiController]
     public class StudentController: ControllerBase
     {
-        private IStudent_Service _student_Service;
+        private IStudent_Service _student_Service ;
 
         public StudentController(IStudent_Service student_Service)
         {

@@ -1,2 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
- 
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.styled-table {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border-radius: 15px;
+
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: 10px;
+}
+.styled-table thead {
+    background-color: #0d6efd;
+    border-radius: 15px;
+    color: #ffffff;
+    text-align: left;
+    
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    
+}
+.styled-table tbody tr {
+    border-bottom: thin solid #dddddd;
+    border-radius: 15px;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+

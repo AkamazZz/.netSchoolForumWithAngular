@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Services.Models
     public class Generic_ResultSet<T>:StandardResultObject
     {
         public T result_set { get; set; }
-        public Dictionary<Student, double> result_set_dictionary { get; set; }
+        public Dictionary<int, double> result_set_dictionary { get; set; }
     }
 
    

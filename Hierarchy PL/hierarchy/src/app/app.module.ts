@@ -27,7 +27,14 @@ import { ShowGroupComponent } from './group/show-group/show-group.component';
 import { AddEditGroupComponent } from './group/add-edit-group/add-edit-group.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { StudentGpaSort } from './Classes/StudentGpaSort.pipe';
+import { MatTableModule } from "@angular/material/table";
+  import { MatButtonModule} from "@angular/material/button";
+  import { MatCheckboxModule } from "@angular/material/checkbox";
+  import {  MatPaginatorModule} from "@angular/material/paginator";
+  import {  MatSortModule } from "@angular/material/sort";
+import { DynamicMatTableModule } from 'dynamic-mat-table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,15 +56,23 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     AddEditStudentsComponent,
     GroupComponent,
     ShowGroupComponent,
-    AddEditGroupComponent
+    AddEditGroupComponent,
+    StudentGpaSort,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    MatButtonModule,
+        MatCheckboxModule,
+        DynamicMatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-
+    Ng2SearchPipeModule,
+    
     RouterModule.forRoot([
       {path: 'ApplyStudent', component: AddEditStudentsComponent},
     ]),

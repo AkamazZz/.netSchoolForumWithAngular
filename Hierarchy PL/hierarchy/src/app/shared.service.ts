@@ -8,6 +8,7 @@ import { SpecialityResult } from 'models/speciality-result.model';
 import { GroupResult } from 'models/group-result.model';
 import { Students } from 'models/students.model';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { StudentResult } from 'models/student-result.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,5 +43,11 @@ readonly APIUrl = "http://localhost:52865/api";
   }
   async DeleteStudent(student_id:number):Promise<StudentsResult>{
     return await this.http.delete<StudentsResult>(this.APIUrl+'/Student/DeleteStudent?student_id=' + student_id).toPromise();
+  }
+  async GetTopStudents():Promise<StudentsResult>{
+    return await this.http.get<StudentsResult>(this.APIUrl + '/Student/GetTopByGPA').toPromise();
+  }
+   InfoById(id:number):Observable<StudentResult>{
+    return this.http.get<StudentResult>(this.APIUrl + '/Student/GetWholeInfoAboutStudentById?id=' + id);
   }
 }

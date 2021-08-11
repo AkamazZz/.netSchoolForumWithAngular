@@ -123,7 +123,7 @@ namespace BusinessLogicLayer.Services.Implementation
             try
             {
                 //GET Faculty FROM DB
-                var spec = await _spec.GetTopFromSpeciliaty(speciality_id);
+                Dictionary<int, double> spec = await _spec.GetTopFromSpeciliaty(speciality_id);
 
 
 

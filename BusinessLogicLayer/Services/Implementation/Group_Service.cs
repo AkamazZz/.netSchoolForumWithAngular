@@ -90,7 +90,7 @@ namespace BusinessLogicLayer.Services.Implementation
             try
             {
                 //GET Faculty FROM DB
-                var group =  await _group.GetTopFromGroup(group_id);
+                Dictionary<int, double> group =  await _group.GetTopFromGroup(group_id);
 
 
 

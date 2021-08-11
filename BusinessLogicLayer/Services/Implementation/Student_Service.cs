@@ -25,7 +25,7 @@ namespace BusinessLogicLayer.Services.Implementation
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
             {
-                var student = await _student.GetTop();
+                Dictionary<int, double> student = await _student.GetTop();
 
                 result.userMessage = string.Format("Top is provided");
                 result.internalMessage = "GetTopOfStudents() method executed successfully.";

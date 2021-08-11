@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { SpecialityResult } from 'models/speciality-result.model';
 import { Speciality } from 'models/speciality.model';
 import { SharedService } from 'src/app/shared.service';
 import { NgModule } from '@angular/core';
-
+import { ModalDirective } from 'angular-bootstrap-md';
+import { FadeInOut } from 'src/app/animations';
 @Component({
   selector: 'app-show-speciality',
   templateUrl: './show-speciality.component.html',
+  animations: [
+    FadeInOut
+  ],
   styleUrls: ['./show-speciality.component.css']
 })
 export class ShowSpecialityComponent implements OnInit {
-  
+  @ViewChild('Modal', {static: true}) Modal: ModalDirective;
   constructor(private service:SharedService) { }
   SpecialityList: SpecialityResult = new SpecialityResult();
   ngOnInit(): void {
@@ -18,7 +22,8 @@ export class ShowSpecialityComponent implements OnInit {
   }
   
   ModalTitle:string;
-  ActivateAddEditSpecialityComp:boolean=false;
+  ActivateAddSpecialityComp:Boolean=false;
+  ActivateEditSpecialityComp:Boolean=false;
   speciality:Speciality= new Speciality();
   async RefreshSpecialityList(){
 
@@ -34,16 +39,29 @@ export class ShowSpecialityComponent implements OnInit {
 });
   }
   addClick(){
-    this.speciality={
-      speciality_id:0,
-      faculty_id:0,
-      speciality_name:""
-    }
     this.ModalTitle="Add Speciality";
-    this.ActivateAddEditSpecialityComp=true;
+    this.Modal.show();
+    this.ActivateAddSpecialityComp=true;
+
+  }
+  EditClick(spec: Speciality){
+    this.speciality = spec;
+    this.ModalTitle="Change Speciality";
+    this.Modal.show();
+    this.ActivateEditSpecialityComp=true;
   }
   closeClick(){
-    this.ActivateAddEditSpecialityComp=false;
+    this.ActivateAddSpecialityComp=false;
+    this.ActivateEditSpecialityComp=false;
+    this.Modal.hide();
     this.RefreshSpecialityList();
   }
+  DeleteSpeciality(spec: Speciality){
+    if(confirm('Are you sure?')){
+      let result = new SpecialityResult();
+      
+    }
+  }
+  
+  
 }

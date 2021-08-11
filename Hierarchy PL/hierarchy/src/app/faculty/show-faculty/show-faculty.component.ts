@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FacultyResult } from 'models/faculty-result.model';
+import { FadeInOut } from 'src/app/animations';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-faculty',
   templateUrl: './show-faculty.component.html',
+  animations:[
+    FadeInOut
+  ],
   styleUrls: ['./show-faculty.component.css']
 })
 export class ShowFacultyComponent implements OnInit {

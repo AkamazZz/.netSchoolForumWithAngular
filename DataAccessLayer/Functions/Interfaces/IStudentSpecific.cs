@@ -8,7 +8,7 @@ namespace DataAccessLayer.Functions.Interfaces
     public interface IStudentSpecific
     {
 
-        public Task<Dictionary<Student, double>> GetTop();
+        public Task<Dictionary<int, double>> GetTop();
 
         public Task<Student> GetStudentIdByFullName(string name, string surname);
     }

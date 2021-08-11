@@ -9,8 +9,11 @@ import { SharedService } from 'src/app/shared.service';
 export class AddEditSpecialityComponent implements OnInit {
 
   constructor(private service:SharedService) { }
+  ActivateAddSpecialityComp:Boolean;
+  ActivateEditSpecialityComp:Boolean;
   //@Input() speciality:any;
   ngOnInit(): void {
   }
 
+  
 }

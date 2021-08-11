@@ -18,11 +18,15 @@ namespace DataAccessLayer.Functions.Specific
             {
                 using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                 {
+                    var numberSubjects = context.Student_Subjects.Where(s => s.Student_Id == student_id).Count(sub => sub.Subject_Id == sub.Subject_Id);
+                    if (numberSubjects > 0)
+                    {
+                        double grade = context.Assessments.Where(g => g.Student_Id == student_id).Average(g => g.Grade);
 
-                    double grade =  context.Assessments.Where(g => g.Student_Id == student_id).Average(g => g.Grade);
-                    
 
-                    return grade;
+                        return grade;
+                    }
+                    return 0;
                 }
             }
             catch

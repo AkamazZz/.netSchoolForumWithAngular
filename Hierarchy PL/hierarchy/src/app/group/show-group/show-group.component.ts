@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupResult } from 'models/group-result.model';
 import { Group } from 'models/group.model';
+import { FadeInOut } from 'src/app/animations';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-group',
   templateUrl: './show-group.component.html',
+  animations:[
+    FadeInOut
+  ],
   styleUrls: ['./show-group.component.css']
 })
 export class ShowGroupComponent implements OnInit {

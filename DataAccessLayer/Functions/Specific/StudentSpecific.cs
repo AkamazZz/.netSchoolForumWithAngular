@@ -25,24 +25,24 @@ namespace DataAccessLayer.Functions.Specific
             }
         }
 
-        public async Task<Dictionary<Student,double>> GetTop()
+        public async Task<Dictionary<int,double>> GetTop()
         {
+
             try
             {
                 using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                 {
                     
-                    List<Student> student_id = await context.Students.ToListAsync(); // from db
+                    List<int> student_id = await context.Students.Select(x => x.Student_Id).ToListAsync(); // from db
                     
                     double gpa;
-                    Dictionary<Student, double> student_gpa = new Dictionary<Student, double>();
+                    Dictionary<int, double> student_gpa = new Dictionary<int, double>();
                     foreach (var student in student_id)
                     {
-                        gpa = _aspec.GPA(student.Student_Id);
+                        gpa = _aspec.GPA(student);
                         student_gpa.Add(student, gpa);
                     }
-                    var st = student_gpa.OrderByDescending(key => key.Value).ToDictionary(x => x.Key, x => x.Value); // sorted
-
+                    var st = (from stud in student_gpa orderby stud.Value descending select stud).ToDictionary(x => x.Key, x => x.Value); // sorted
                     return st;
                 }
             }

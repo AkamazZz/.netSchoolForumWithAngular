@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { FacultyResult } from 'models/faculty-result.model';
 import { Faculty } from 'models/faculty.model';
 import { GroupResult } from 'models/group-result.model';
@@ -18,7 +18,7 @@ import { ShowStudentsComponent } from '../show-students/show-students.component'
 
 })
 export class AddEditStudentsComponent  implements OnInit {
-
+  
   currentStudent: Students = new Students();
   showStudent:ShowStudentsComponent;
   load: string = 'visibility:hidden';

@@ -90,7 +90,7 @@ namespace BusinessLogicLayer.Services.Implementation
             try
             {
                 //GET Faculty FROM DB
-                var faculty = await _faculty.GetTopFromFaculty(faculty_id);
+                Dictionary<int, double> faculty = await _faculty.GetTopFromFaculty(faculty_id);
                
 
                 

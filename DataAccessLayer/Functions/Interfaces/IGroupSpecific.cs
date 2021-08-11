@@ -8,7 +8,7 @@ namespace DataAccessLayer.Functions.Interfaces
     public interface IGroupSpecific
     {
 
-        public Task<Dictionary<Student, double>> GetTopFromGroup(int group_id);
+        public Task<Dictionary<int, double>> GetTopFromGroup(int group_id);
 
         public Task<List<Student>> GetAllFromGroup(int group_id);
 

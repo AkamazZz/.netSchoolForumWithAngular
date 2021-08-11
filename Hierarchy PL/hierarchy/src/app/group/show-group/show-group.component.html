@@ -5,7 +5,7 @@
 
 <button type="button" class="btn btn-primary float-right m-2" 
 data-toggle="modal" data-target="#exampleModal"
-
+[@flyInOut] = "'in'"
 data-backdrop="static" data-keyboard="false"
 >
     Add Group
@@ -26,9 +26,9 @@ data-backdrop="static" data-keyboard="false"
 
 
 
-<table class="table table-striped">
+<table class="table table-striped" class="styled-table">
     <thead>
-        <tr>
+        <tr [@flyInOut] = "'in'">
             <th>Id</th>
             <th>Name</th>
             <th>Options</th>
@@ -36,7 +36,7 @@ data-backdrop="static" data-keyboard="false"
         </tr>
     </thead>
     <tbody>
-         <tr *ngFor="let group of GroupList.result_set">
+         <tr *ngFor="let group of GroupList.result_set" [@flyInOut] = "'in'">
             <td>{{group.group_id}}}</td>
             <td>{{group.group_name}}</td>
             <td>                <button type="button" class="btn btn-light mr-1"
