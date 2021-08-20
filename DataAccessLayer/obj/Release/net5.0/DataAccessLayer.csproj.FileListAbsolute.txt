@@ -1,0 +1,16 @@
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\appsettings.json
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\DataAccessLayer.deps.json
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\DataAccessLayer.runtimeconfig.json
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\DataAccessLayer.runtimeconfig.dev.json
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\ref\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\bin\Release\net5.0\DataAccessLayer.pdb
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.AssemblyInfo.cs
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\ref\DataAccessLayer.dll
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.pdb
+C:\Hierarchy\DataAccessLayer\obj\Release\net5.0\DataAccessLayer.genruntimeconfig.cache
