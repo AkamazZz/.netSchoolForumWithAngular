@@ -15,6 +15,7 @@ How to start an application:
 	- Start debugging from visual studio
 	- from opened browser you're directed to swagger where you can check out the queries
 	- next step to change APIUrl to you localhost port via Hierarchy PL/hierarchy/src/app shared.service.ts 
+        - print npm install debug in folder where Hierarchy PL/hierarchy/ through command line
 	- start frontend by command ng server --open in the same folder where Hierarchy PL/hierarchy/ through command line
 
 
@@ -26,12 +27,13 @@ ERD-DIAGRAM.png - это представление логики
 Hierarchy PL - это папка, которая представляет собой frontend на основе Angular.
 
 Предпосылки:
--visual studio или visual studio code
--npm менеджер пакетов
--angular (вы можете установить через командную строку, передав npm install -g @ angular / cli)
+	-visual studio или visual studio code
+	-npm менеджер пакетов
+	-angular (вы можете установить через командную строку, передав npm install -g @ angular / cli)
 
 Как запустить приложение:
-- Начать отладку из Visual Studio
-- из открытого браузера вы попадаете в swagger, где можете проверить запросы
-- следующий шаг это изменить APIUrl на порт localhost через Hierarchy PL /ierarchy / src / app shared.service.ts
-- запустить интерфейс командой ng server --open в той же папке, где находится Hierarchy PL /hierarchy / через командную строку
+	- Начать отладку из Visual Studio
+	- из открытого браузера вы попадаете в swagger, где можете проверить запросы
+	- следующий шаг это изменить APIUrl на порт localhost через Hierarchy PL /ierarchy / src / app shared.service.ts
+	-написать командную строку где находится Hierarchy PL/hierarchy/ и введите npm install debug 
+	- запустить интерфейс командой ng server --open в той же папке, где находится Hierarchy PL /hierarchy / через командную строку
