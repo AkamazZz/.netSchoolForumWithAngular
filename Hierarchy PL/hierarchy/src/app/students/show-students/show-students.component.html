@@ -20,14 +20,13 @@ data-toggle="modal" data-target="#Modal"
         <div class="modal-body" >
           
           
-            <app-add-edit-students [student] = "student" [ActivateAddStudentComp] = "ActivateAddStudentComp"  [ActivateEditStudentComp] = "ActivateEditStudentComp"></app-add-edit-students>
-          
+            <app-add-edit-students [student] = "student" [ActivateAddStudentComp] = "ActivateAddStudentComp"  [ActivateEditStudentComp] = "ActivateEditStudentComp" *ngIf = "ActivateAddStudentComp || ActivateEditStudentComp"></app-add-edit-students>
+            <app-show-subject [studentSubject] = "studentSubject" [ActivateShowSubjectComp] = "ActivateShowSubjectComp" *ngIf="ActivateShowSubjectComp == true"></app-show-subject>
         </div>
         
       </div>
     </div>
   </div>
-  
   <table  class="styled-table"*ngIf = "IsTopList">
     <thead>
         <tr [@flyInOut] = "'in'">
@@ -51,14 +50,13 @@ data-toggle="modal" data-target="#Modal"
             </div>
             Name
             <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="GpaStudents" [sortBy] = "'student_name'">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColow" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
               </svg>
             </button></th>
             <th>
             <div class = "d-flex flex-row">
-              <input [(ngModel)] = "student_surname_filter" class = "form-control" placeholder="Filter"
-              >
+              
               </div>
               Surname
               <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="GpaStudents" [sortBy] = "'student_surname'">
@@ -67,10 +65,7 @@ data-toggle="modal" data-target="#Modal"
                 </svg>
               </button></th>
               <th>
-              <div class = "d-flex flex-row">
-                <input [(ngModel)] = "student_faculty_filter" class = "form-control" placeholder="Filter"
-                >
-                </div>GPA
+              GPA
                 <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="GpaStudents" [sortBy] = "'GPA'">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
@@ -134,10 +129,7 @@ data-toggle="modal" data-target="#Modal"
             </svg>
           </button></th>
           <th>
-          <div class = "d-flex flex-row">
-            <input [(ngModel)] = "student_surname_filter" class = "form-control" placeholder="Filter"
-            >
-            </div>
+          
             Surname
             <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="StudentList.result_set" [sortBy] = "SortElements[2]">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -145,20 +137,14 @@ data-toggle="modal" data-target="#Modal"
               </svg>
             </button></th>
             <th>
-            <div class = "d-flex flex-row">
-              <input [(ngModel)] = "student_faculty_filter" class = "form-control" placeholder="Filter"
-              >
-              </div>Faculty
+           Faculty
               <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="StudentList.result_set" [sortBy] = "SortElements[3]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z"/>
                 </svg>
               </button></th>
               <th>
-              <div class = "d-flex flex-row">
-              <input [(ngModel)] = "student_speciality_filter" class = "form-control" placeholder="Filter"
-                >
-                </div>
+             
               Speciality
               <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="StudentList.result_set" [sortBy] = "SortElements[4]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -166,10 +152,7 @@ data-toggle="modal" data-target="#Modal"
                 </svg>
               </button></th>
                 <th>
-                <div class = "d-flex flex-row">
-                  <input [(ngModel)] = "student_group_filter" class = "form-control" placeholder="Filter">
-            
-         </div>
+                
          Group
          <button type="button" class="btn btn-light" aria-controls="tableSort" scope="col" [mdbTableSort]="StudentList.result_set" [sortBy] = "SortElements[5]">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
@@ -189,7 +172,7 @@ data-toggle="modal" data-target="#Modal"
           <td [@flyInOut] = "'in'">{{st.faculty_name}}</td>  
           <td [@flyInOut] = "'in'">{{st.speciality_name}}</td>
           <td [@flyInOut] = "'in'">{{st.group_name}}</td>      
-          <td [@flyInOut] = "'in'">
+          <td [@flyInOut] = "'in'" style = "text-align: center;">
               <button type="button" class="btn btn-light mr-1"
               data-toggle="modal" data-target="#exampleModal"
               (click)="show_edit(st)"
@@ -207,6 +190,16 @@ data-toggle="modal" data-target="#Modal"
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                 </svg>
+              </button>
+              <button type="button" class="btn btn-light mr-1"
+              data-toggle="modal" data-target="#exampleModal"
+              (click)="showSubjects(st)"
+              >
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+              </svg>
               </button>
           </td>
       </tr>

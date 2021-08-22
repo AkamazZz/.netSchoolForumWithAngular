@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Functions.Interfaces;
 using DataAccessLayer.DataContext;
-
+using System.Linq;
 namespace DataAccessLayer.Functions.CRUD
 {
    public  class CRUD: ICRUD
@@ -69,7 +69,7 @@ namespace DataAccessLayer.Functions.CRUD
                 {
                     using (DatabaseContext context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                     {
-                        var result = await context.Set<T>().ToListAsync();
+                        var result = await context.Set<T>().AsNoTracking().AsSingleQuery().ToListAsync();
                         return result;
                     }
                 }

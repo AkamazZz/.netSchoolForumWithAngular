@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Hierarchy.Models.Student;
+using BenchmarkDotNet.Attributes;
 
 namespace Hierarchy.Controllers
 
@@ -172,6 +173,8 @@ namespace Hierarchy.Controllers
 
         [HttpGet]
         [Route("[action]")]
+        [Benchmark(Baseline = true)]
+
         public async Task<IActionResult> GetAllStudents()
         {
 

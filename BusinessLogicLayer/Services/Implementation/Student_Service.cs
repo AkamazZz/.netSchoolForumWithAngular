@@ -198,6 +198,8 @@ namespace BusinessLogicLayer.Services.Implementation
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
             {
+                if (student_id != null && speciality_id != null && faculty_id !=null
+                    && group_id != null && name != null && surname != null) { 
                 //GET Student FROM DB
                 Student studentToUpdate = new Student
                 {
@@ -209,24 +211,27 @@ namespace BusinessLogicLayer.Services.Implementation
                     FirstName = caseConversion.firstCaseToUpper(name),
                     LastName = caseConversion.firstCaseToUpper(surname),
                 };
-                studentToUpdate = await _crud.Update<Student>(studentToUpdate, student_id);
-                //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
-                Student_ResultSet studentReturned = new Student_ResultSet
-                {
-                    student_id = studentToUpdate.Student_Id,
-                    university_id = studentToUpdate.University_Id,
-                    speciality_id = studentToUpdate.Speciality_Id,
-                    faculty_id = studentToUpdate.Faculty_Id,
-                    group_id = studentToUpdate.Group_Id,
-                    student_name = studentToUpdate.FirstName,
-                    student_surname = studentToUpdate.LastName,
-                };
+                
+                    studentToUpdate = await _crud.Update<Student>(studentToUpdate, student_id);
+                    //MANUAL MAPPING OF RETURNED student VALUES TO OUR student_ResultSet
+                    Student_ResultSet studentReturned = new Student_ResultSet
+                    {
+                        student_id = studentToUpdate.Student_Id,
+                        university_id = studentToUpdate.University_Id,
+                        speciality_id = studentToUpdate.Speciality_Id,
+                        faculty_id = studentToUpdate.Faculty_Id,
+                        group_id = studentToUpdate.Group_Id,
+                        student_name = studentToUpdate.FirstName,
+                        student_surname = studentToUpdate.LastName,
+                    };
 
-                //SET SUCCESSFUL RESULT VALUES
-                result.userMessage = string.Format($"Student {studentReturned.student_name} {studentReturned.student_surname} has been changed");
-                result.internalMessage = "UpdateStudent() method executed successfully.";
+                    //SET SUCCESSFUL RESULT VALUES
+                    result.userMessage = string.Format($"Student {studentReturned.student_name} {studentReturned.student_surname} has been changed");
+                    result.internalMessage = "UpdateStudent() method executed successfully.";
 
-                result.success = true;
+                    result.success = true;
+                }
+                
             }
             catch (Exception exception)
             {
@@ -243,7 +248,7 @@ namespace BusinessLogicLayer.Services.Implementation
             Generic_ResultSet<Student_ResultSet> result = new Generic_ResultSet<Student_ResultSet>();
             try
             {
-                var isDeleted = await _crud.Delete<Student>(student_id);
+                var isDeleted = await _student.DeleteStudent(student_id);
                 
 
                 //SET SUCCESSFUL RESULT VALUES
@@ -403,7 +408,8 @@ namespace BusinessLogicLayer.Services.Implementation
             try
             {
                 //GET Student FROM DB
-                List<Student> student = await _crud.ReadAll<Student>();
+                List<Student> student = await _student.GetAllStudents();
+               // List<Student> student = await _crud.ReadAll<Student>();
 
 
                 //MANUAL MAPPING OF RETURNED Student VALUES TO OUR Student_ResultSet

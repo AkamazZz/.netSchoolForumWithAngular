@@ -7,6 +7,7 @@ import { SpecialityResult } from 'models/speciality-result.model';
 import { StudentsResult } from 'models/students-result.model';
 import { Students } from 'models/students.model';
 import { ModalContainerComponent, ModalDirective } from 'ngx-bootstrap/modal';
+import { FadeInOut } from 'src/app/animations';
 import { SharedService } from 'src/app/shared.service';
 import { ShowStudentsComponent } from '../show-students/show-students.component';
 
@@ -14,7 +15,10 @@ import { ShowStudentsComponent } from '../show-students/show-students.component'
 @Component({
   selector: 'app-add-edit-students',
   templateUrl: './add-edit-students.component.html',
-  styleUrls: ['./add-edit-students.component.css']
+  styleUrls: ['./add-edit-students.component.css'],
+  animations: [
+    FadeInOut
+  ]
 
 })
 export class AddEditStudentsComponent  implements OnInit {
@@ -107,6 +111,7 @@ CurrentStudent: Students;
     let result = new StudentsResult();
     this.disabled = 'disabled';
     this.load = "";
+   
      this.service
       .UpdateStudent(this.student)
       .then((data) => {

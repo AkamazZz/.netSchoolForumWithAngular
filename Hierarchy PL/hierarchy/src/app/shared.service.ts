@@ -9,6 +9,11 @@ import { GroupResult } from 'models/group-result.model';
 import { Students } from 'models/students.model';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { StudentResult } from 'models/student-result.model';
+import { SubjectsResult } from 'models/subjects-result.model';
+import { Assessment } from 'models/assessment.model';
+import { AssessmentResult } from 'models/assessment-result.model';
+import { AssessmentsResult } from 'models/assessments-result.model';
+import { StudentSubject } from 'models/student-subject.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -49,5 +54,26 @@ readonly APIUrl = "http://localhost:52865/api";
   }
    InfoById(id:number):Observable<StudentResult>{
     return this.http.get<StudentResult>(this.APIUrl + '/Student/GetWholeInfoAboutStudentById?id=' + id);
+  }
+  async GetSubjectByStudent(id:number):Promise<SubjectsResult>{
+    return await this.http.get<SubjectsResult>(this.APIUrl + '/Subject/GetSubjectsNameByStudentId?student_id=' + id).toPromise();
+  }
+  async DeleteSubjectOfStudent(student_id:number, subject_id:number):Promise<SubjectsResult>{
+    return await this.http.delete<SubjectsResult>(this.APIUrl + '/Subject/DeleteSubjectOfStudent?student_id=' + student_id + '&subject_id=' + subject_id).toPromise();
+  }
+  async GetGradeBySubjectAndStudent(student_id:number, subject_id:number):Promise<AssessmentResult>{
+    return await this.http.get<AssessmentResult>(this.APIUrl + '/Assessment/GetGradeByStudentIdAndSubjectId?student_id=' + student_id + '&subject_id=' + subject_id).toPromise();
+  }
+  async GetGradeByStudent(student_id:number):Promise<AssessmentsResult>{
+    return await this.http.get<AssessmentsResult>(this.APIUrl + '/Assessment/GetGradeByStudentId?student_id=' + student_id).toPromise();
+  }
+  async CreateGrade(grade: Assessment):Promise<AssessmentResult>{
+    return await this.http.post<AssessmentResult>(this.APIUrl + '/Assessment/CreateGrade', grade, {}).toPromise();
+  }
+  async GetSubjects():Promise<SubjectsResult>{
+    return await this.http.get<SubjectsResult>(this.APIUrl + '/Subject/GetSubjects').toPromise();
+  }
+  async AddSubjectToStudent(add:StudentSubject):Promise<SubjectsResult>{
+    return await this.http.post<SubjectsResult>(this.APIUrl + '/Subject/AddSubjectToStudent', add, {}).toPromise();
   }
 }

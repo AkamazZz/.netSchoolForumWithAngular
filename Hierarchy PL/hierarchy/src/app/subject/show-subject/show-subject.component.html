@@ -1,1 +1,48 @@
-<p>show-subject works!</p>
+<table  class="styled-table">
+    <thead>
+        <tr [@flyInOut] = "'in'">     
+            <th>ID</th>
+            <th>Name</th>
+            <th>Grade</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+  
+        <tr *ngFor="let subjects of StudentSubjectList.result_set; let i = index">
+            <td [@flyInOut] = "'in'">{{StudentSubjectList.result_set[i].subject_id}}</td>
+            <td [@flyInOut] = "'in'">{{StudentSubjectList.result_set[i].subject_name}}</td>
+            <td [@flyInOut] = "'in'">{{AssessmentList[i].grade}}%</td>
+
+            <td [@flyInOut] = "'in'">
+                <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click) = "deleteSubjectOfStudent(studentSubject.student_id, subjects.subject_id)"
+                >
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                  </svg>
+                </button>
+
+            </td>
+            
+       
+        </tr>
+        
+        
+    </tbody>
+  </table>
+  <div class="row" style="text-align:center">
+    <div class="col-md-2">
+      <label for="Subject">Add another subject</label>
+      <select  class="form-control" id="subject" 
+        [ngModel]="SubjectToAdd.subject_id" (ngModelChange)="SubjectToAdd.subject_id= $event"> 
+    <option *ngFor="let subjects of SubjectListToAdd.result_set" [value] = "subjects.subject_id">
+        {{subjects.subject_name}}
+    </option></select> 
+
+
+    </div>
+    <button class="btn btn-primary btn-block"  type="button" (click)="AddSubjectTOStudent(SubjectToAdd)   ">Submit </button>
+
+    </div>

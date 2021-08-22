@@ -41,15 +41,60 @@ namespace DataAccessLayer.Functions.Specific
                 using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
                 {
 
-                    var mark =  context.Assessments.Where(g => g.Student_Id == student_id).Where(s => s.Subject_Id == subject_id).First();
+                    var mark = await context.Assessments.Where(g => g.Student_Id == student_id).Where(s => s.Subject_Id == subject_id).FirstOrDefaultAsync();
 
                     if (mark != null)
                     {
-                        mark.Grade = grade;             
+                        mark.Grade = grade;
                         await context.SaveChangesAsync();
                         return mark;
                     }
                     return null;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+            public async Task<Assessment> GetAssessmentByStudentIdAndSubjectId(int student_id, int subject_id)
+            {
+                try
+                {
+                    using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                    {
+
+                        var mark = await context.Assessments.Where(g => g.Student_Id == student_id).Where(s => s.Subject_Id == subject_id).FirstOrDefaultAsync();
+                        if(mark == null) {
+
+                        mark = new Assessment
+                        {
+                            Student_Id = student_id,
+                            Subject_Id = subject_id,
+                            Grade = 0
+
+                        };
+                        await context.AddAsync<Assessment>(mark);
+                        await context.SaveChangesAsync();
+                    }
+                        return mark;
+                    }
+                }
+                catch
+                {
+                    throw;
+                }
+            }
+        public async Task<List<Assessment>> GetAssessmentByStudentId(int student_id)
+        {
+            try
+            {
+                using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+
+                    var mark = await context.Assessments.Where(g => g.Student_Id == student_id).ToListAsync();
+                    
+                    return mark;
                 }
             }
             catch

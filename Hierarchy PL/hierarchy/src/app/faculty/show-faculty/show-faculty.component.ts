@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/shared.service';
   templateUrl: './show-faculty.component.html',
   animations:[
     FadeInOut
-  ],
+  ], 
   styleUrls: ['./show-faculty.component.css']
 })
 export class ShowFacultyComponent implements OnInit {

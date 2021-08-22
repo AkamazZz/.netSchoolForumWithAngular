@@ -21,6 +21,7 @@ import {
   TableVirtualScrollDataSource,
   IRowEvent
 } from "dynamic-mat-table";
+import { Router } from '@angular/router';
 import { StudentGpaSort } from 'src/app/Classes/StudentGpaSort';
 
 
@@ -39,9 +40,10 @@ function delay(ms: number){
 export class ShowStudentsComponent implements OnInit {
   @HostListener('keydown.escape')
 fn() {
-  if(this.ActivateAddStudentComp == true || this.ActivateEditStudentComp == true)
+  if(this.ActivateAddStudentComp == true || this.ActivateEditStudentComp == true || this.ActivateShowSubjectComp)
   this.ActivateAddStudentComp=false;
       this.ActivateEditStudentComp = false;
+      this.ActivateShowSubjectComp = false;
  this.refreshStudentList();
 }
   StudentGpaColumns: string[] = ['student_id', 'student_name', 'student_surname', 'GPA'];
@@ -55,7 +57,7 @@ fn() {
   @ViewChild('Modal', {static: true}) Modal: ModalDirective;
 
   @Input() isChanged: Boolean;
-  constructor(private service:SharedService, private ModalService: MDBModalService) {
+  constructor(private service:SharedService, private ModalService: MDBModalService, private router: Router) {
    }
    IsSimpleList: Boolean;
    IsTopList: Boolean;
@@ -206,7 +208,7 @@ close(){
    this.refreshStudentList();
       this.ActivateAddStudentComp=false;
       this.ActivateEditStudentComp = false;
-    
+    this.ActivateShowSubjectComp = false;
    
 }
 delete_student(student_id: number){
@@ -236,9 +238,15 @@ show_edit(item:Students){
   this.ModalTitle="Edit student";
   this.ActivateEditStudentComp = true;
   this.Modal.show();
-
 }
-
+studentSubject: Students = new Students();
+ActivateShowSubjectComp: boolean = false;
+showSubjects(student: Students){
+  this.studentSubject = student;
+  this.ActivateShowSubjectComp = true;
+  this.ModalTitle = student.student_name + " " +student.student_surname + "'s subject profile";
+  this.Modal.show();
+}
 topStudents(){
   this.IsSimpleList = false;
   this.IsTopList = true;
@@ -254,6 +262,7 @@ simpleStudentInformation(){
   this.refreshStudentList();
   
 }
+
 }
 
 export interface TestElement extends TableRow {

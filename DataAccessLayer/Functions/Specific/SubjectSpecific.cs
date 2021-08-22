@@ -29,5 +29,76 @@ namespace DataAccessLayer.Functions.Specific
                 throw;
             }
         }
+        public async Task<bool> DeleteSubjectFromStudent(int student_id, int subject_id)
+        {
+            try
+            {
+                using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+
+                    var deleteObject = await context.Student_Subjects
+                        .Where(x => x.Student_Id == student_id)
+                        .Where(y => y.Subject_Id == subject_id)
+                        .FirstOrDefaultAsync();
+                    var deleteGrades = await context.Assessments
+                        .Where(x => x.Student_Id == student_id)
+                        .Where(y => y.Subject_Id == subject_id)
+                        .ToListAsync();
+                    if (deleteObject != null)
+                    {
+                        context.Remove(deleteObject);
+                        await context.SaveChangesAsync();
+                        context.Remove(deleteGrades);
+                        await context.SaveChangesAsync();
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public async Task<Student_subject> AddSubjectToStudent(int student_id, int subject_id)
+        {
+            try
+            {
+                using (var context = new DatabaseContext(DatabaseContext.Options.DatabaseOptions))
+                {
+                    if (!await context.Student_Subjects
+                        .AnyAsync(x => x.Student_Id == student_id && x.Subject_Id ==subject_id ))
+                    {
+                        Student_subject subject = new Student_subject
+                        {
+                            Student_Id = student_id,
+                            Subject_Id = subject_id
+                        };
+                        if(!await context.Assessments.AnyAsync(x => x.Student_Id == student_id && x.Subject_Id == subject_id))
+                        {
+                            Assessment grade = new Assessment
+                            {
+                                Student_Id = student_id,
+                                Subject_Id = subject_id,
+                                Grade = 0,
+                            };
+                            await context.AddAsync<Assessment>(grade);
+                            await context.SaveChangesAsync();
+                        }
+                        await context.AddAsync<Student_subject>(subject);
+                        await context.SaveChangesAsync();
+                        return subject;
+                    }
+                    
+
+                    return null;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

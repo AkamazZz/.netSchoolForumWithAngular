@@ -1,7 +1,7 @@
 ﻿using System;
 using DataAccessLayer.Entity;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.Logging;
 
 namespace DataAccessLayer.DataContext
 {
