@@ -15,6 +15,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataAccessLayer.DataContext;
+using Microsoft.EntityFrameworkCore;
+using static DataAccessLayer.DataContext.DatabaseContext;
 
 namespace Main
 {
@@ -30,6 +33,11 @@ namespace Main
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var Settings = new AppConfiguration();
+
+            string sqlSettings = Settings.SqlConnectionString;
+            services.AddDbContext<DatabaseContext>(opt => opt.UseSqlServer(sqlSettings));
+
             services.AddControllers();
             services.AddSwaggerGen  (c =>
             {

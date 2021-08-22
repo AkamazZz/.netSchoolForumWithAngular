@@ -3,7 +3,7 @@ Test task
 ENG:
 University.bak is the database, you can take it as a source of students
 ERD-DIAGRAM.png is the presentation of logic
-In folder DataAccessLayer/DataContext you can find appsettings.json which is the configure file for connection to database
+In folder Main you can find appsettings.json which is the configure file for connection to database
 Hierarchy PL is a folder which represent frontend based on Angular.
 
 Prequisites:
@@ -22,7 +22,7 @@ How to start an application:
 RUS: 
 University.bak - это база данных, вы можете использовать ее как источник студентов.
 ERD-DIAGRAM.png - это представление логики
-В папке DataAccessLayer / DataContext вы можете найти appsettings.json, который является файлом конфигурации для подключения к базе данных.
+В папке Main вы можете найти appsettings.json, который является файлом конфигурации для подключения к базе данных.
 Hierarchy PL - это папка, которая представляет собой frontend на основе Angular.
 
 Предпосылки:
